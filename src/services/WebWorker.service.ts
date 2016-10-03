@@ -48,7 +48,6 @@ export class $WebWorker {
                        var data = e.data;
 
                        Promise.resolve(_commands[data.command].apply(_commands, data.params)).then(function(result) {
-                       console.log(result);
                          postMessage({
                            callId: data.callId,
                            result: result
