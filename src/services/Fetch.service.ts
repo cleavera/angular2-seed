@@ -1,7 +1,6 @@
 import {Http} from './Http.service';
 
 function appendLocalHost(url) {
-  console.log(url.substr(0, 1));
   if (url.substr(0, 1) !== '/') {
     return url;
   }
@@ -12,5 +11,5 @@ function appendLocalHost(url) {
 export function $fetch(url) {
   let httpWorker: any = Http.getHttpWorker();
 
-  return httpWorker.get(appendLocalHost(url));
+  return httpWorker.getJSON(appendLocalHost(url));
 }

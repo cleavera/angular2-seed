@@ -19,7 +19,7 @@ export class Http {
 }
 
 class $$Http {
-  static get(url) {
+  static getJSON(url) {
     return fetch(new Request(url)).then(function(response) {
       return response.json();
     });
