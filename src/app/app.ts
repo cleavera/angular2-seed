@@ -8,14 +8,22 @@ import {Model} from "../services/Model.service";
 })
 export class AppComponent {
   fetch() {
-    // fetch('favicon.ico').then(resp => console.log(resp));
     let model = Model.getRoot('http://localhost:1337');
-    model.$promise.then((data) => {
-      console.log(data);
-      let child = model.link.presentation();
 
-      child.$promise.then(resp => console.log(resp));
+    model.$promise.then((root) => {
+      console.log(root);
+
+      model.link.presentation().$promise.then(presentation => {
+        console.log(presentation);
+
+        presentation.data[0].link.slide().$promise.then(slide => {
+          console.log(slide);
+
+          slide.data[0].link.content().$promise.then(content => {
+            console.log(content);
+          });
+        });
+      });
     });
-    // $fetch('http://localhost:1337/').then(resp => console.log(resp));
   }
 }

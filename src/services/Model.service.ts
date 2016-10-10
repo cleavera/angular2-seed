@@ -1,5 +1,6 @@
 import {$fetch} from './Fetch.helper';
-import {$partial} from "./Partial.helper";
+import {$partial} from './Partial.helper';
+import {Collection} from './Collection.service';
 
 export class Model {
   private _apiRoot: string;
@@ -20,7 +21,7 @@ export class Model {
       this.link = {};
 
       relationships.forEach(relationship => {
-        this.link[relationship] = $partial(Model.get, this._apiRoot + response.links[relationship].href);
+        this.link[relationship] = $partial(Collection.list, this._apiRoot + response.links[relationship].href, this._apiRoot);
       });
 
       return this;
