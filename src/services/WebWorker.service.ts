@@ -40,20 +40,21 @@ export class $WebWorker {
       funcs = Object.keys(functions);
 
     funcs.forEach(name => {
-      workerSource += `_commands['${name}'] = ${functions[name].toString()};\n\n`;
+      workerSource += `_commands['${name}'] = ${functions[name].toString()};\n`;
       this[name] = $partial(this._callMethod, name);
     });
 
-    workerSource += `addEventListener('message', function(e) {
-                       var data = e.data;
+    workerSource += `
+      addEventListener('message', function(e) {
+        var data = e.data;
 
-                       Promise.resolve(_commands[data.command].apply(_commands, data.params)).then(function(result) {
-                         postMessage({
-                           callId: data.callId,
-                           result: result
-                         });
-                       });
-                     });`;
+        Promise.resolve(_commands[data.command].apply(_commands, data.params)).then(function(result) {
+          postMessage({
+            callId: data.callId,
+            result: result
+          });
+        });
+      });`;
 
     var workerBlob = $Blob.fromString(workerSource);
 
