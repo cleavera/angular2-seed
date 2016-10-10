@@ -44,7 +44,7 @@ export class $WebWorker {
       this[name] = $partial(this._callMethod, name);
     });
 
-    workerSource += `addEventListener("message", function(e) {
+    workerSource += `addEventListener('message', function(e) {
                        var data = e.data;
 
                        Promise.resolve(_commands[data.command].apply(_commands, data.params)).then(function(result) {
