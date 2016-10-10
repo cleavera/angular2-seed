@@ -1,5 +1,5 @@
 import {$Blob} from './Blob.service'
-import {uniqueId} from './UniqueId.helper'
+import {$uniqueId} from './UniqueId.helper'
 import {$partial} from './Partial.helper'
 
 export class $WebWorker {
@@ -23,7 +23,7 @@ export class $WebWorker {
 
   private _callMethod(methodName, ...params) {
     return new Promise((resolve, reject) => {
-      var id = uniqueId('$WebWorkerCall');
+      var id = $uniqueId('$WebWorkerCall');
 
       this._promise[id] = { resolve: resolve, reject: reject };
 
