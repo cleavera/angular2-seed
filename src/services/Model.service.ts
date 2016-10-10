@@ -1,4 +1,4 @@
-import {$fetch} from './Fetch.service';
+import {$fetch} from './Fetch.helper';
 import {partial} from "./Partial.helper";
 
 export class Model {

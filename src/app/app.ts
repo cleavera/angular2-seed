@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {$fetch} from '../services/Fetch.service';
+import {$fetch} from '../services/Fetch.helper';
 import {Model} from "../services/Model.service";
 
 @Component({
