@@ -1,6 +1,6 @@
 import {$Blob} from './Blob.service'
 import {uniqueId} from './UniqueId.helper'
-import {partial} from './Partial.helper'
+import {$partial} from './Partial.helper'
 
 export class $WebWorker {
   private _promise: any;
@@ -41,7 +41,7 @@ export class $WebWorker {
 
     funcs.forEach(name => {
       workerSource += '_commands["' + name + '"] = ' + functions[name].toString() + ';\n\n';
-      this[name] = partial(this._callMethod, name);
+      this[name] = $partial(this._callMethod, name);
     });
 
     workerSource += `addEventListener("message", function(e) {
