@@ -40,7 +40,7 @@ export class $WebWorker {
       funcs = Object.keys(functions);
 
     funcs.forEach(name => {
-      workerSource += '_commands["' + name + '"] = ' + functions[name].toString() + ';\n\n';
+      workerSource += `_commands['${name}'] = ${functions[name].toString()};\n\n`;
       this[name] = $partial(this._callMethod, name);
     });
 
