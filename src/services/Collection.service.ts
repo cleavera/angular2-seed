@@ -22,6 +22,16 @@ export class Collection {
     });
   }
 
+  public get(id: string, type?: string) {
+    return this.data.filter((model: Model) => {
+      if (type) {
+        return model.type === type && model.id === id;
+      }
+
+      return model.id === id;
+    })
+  }
+
   public static list(url: string, root: string): Collection {
     return new Collection($fetch(url), root);
   }

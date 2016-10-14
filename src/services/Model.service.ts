@@ -9,12 +9,16 @@ export class Model {
   $promise: Promise<any>;
   attributes: any;
   link: any;
+  id: string;
+  type: string;
 
   constructor(promise: Promise<any>, root: string) {
     this._apiRoot = root;
     this.$promise = promise.then((response) => {
       this.$resolved = true;
 
+      this.id = response.id;
+      this.type = response.type;
       this.attributes = response.attributes;
 
       let relationships = Object.keys(response.links);
