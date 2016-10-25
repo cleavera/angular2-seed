@@ -1,0 +1,7 @@
+Hello world
+
+<ul *ngIf="presentations && presentations.$resolved">
+  <li *ngFor="let presentation of presentations.data">
+    {{presentation.attributes.name}}
+  </li>
+</ul>
