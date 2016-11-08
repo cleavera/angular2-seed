@@ -1,4 +1,4 @@
-import {$fetch} from './Fetch.helper';
+import {$fetch} from 'webworker-http/dist/index';
 import {$partial} from './Partial.helper';
 import {Collection} from './Collection.service';
 

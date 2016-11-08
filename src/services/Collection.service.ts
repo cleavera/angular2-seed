@@ -1,4 +1,4 @@
-import {$fetch} from './Fetch.helper';
+import {$fetch} from 'webworker-http/dist/index';
 import {Model} from "./Model.service";
 
 export class Collection {
