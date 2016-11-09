@@ -1,5 +1,7 @@
 <ul *ngIf="presentations && presentations.$resolved">
   <li *ngFor="let presentation of presentations.data">
-    {{presentation.attributes.name}}
+    <button (click)="onSelect(presentation)">{{presentation.attributes.name}}</button>
   </li>
 </ul>
+
+<o-presentation *ngIf="selectedPresentation" [id]="selectedPresentation.id"></o-presentation>

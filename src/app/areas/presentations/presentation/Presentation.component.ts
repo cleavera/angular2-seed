@@ -1,5 +1,7 @@
-import {Component, Injector} from '@angular/core';
+import {Component, Injector, Input} from '@angular/core';
 import {Resolve} from "../../../service/Resolver.annotation";
+import {Model} from "../../../../services/Model.service";
+import {Collection} from "../../../../services/Collection.service";
 
 @Resolve({
   presentation: function (data) {
@@ -15,15 +17,16 @@ import {Resolve} from "../../../service/Resolver.annotation";
   templateUrl: './presentation.html',
 })
 export class PresentationsDetailsOrchestrator {
-  public presentation;
-  public slides;
+  @Input()
   public id;
+
+  public presentation: Model;
+  public slides: Collection;
 
   constructor(private $injector: Injector) {}
 
   ngOnResolve(data: any) {
     this.presentation = data.presentation;
     this.slides = data.slides;
-    console.log(data);
   }
 }
