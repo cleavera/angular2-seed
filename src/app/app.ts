@@ -1,28 +1,16 @@
-import {Component} from '@angular/core';
-import {Model} from "../services/Model.service";
+import {Component, Injector} from '@angular/core';
+import {Model} from '../services/Model.service';
+import {Resolve} from "./service/Resolver.annotation";
 
+@Resolve({
+  root: () => {
+    return Model.getRoot('http://localhost:1337').$promise;
+  }
+})
 @Component({
   selector   : 'app',
   templateUrl: './app.html',
 })
 export class AppComponent {
-  fetch() {
-    let model = Model.getRoot('http://localhost:1337');
-
-    model.$promise.then((root) => {
-      console.log(root);
-
-      model.link.presentation().$promise.then(presentation => {
-        console.log(presentation);
-
-        presentation.data[0].link.slide().$promise.then(slide => {
-          console.log(slide);
-
-          slide.data[0].link.content().$promise.then(content => {
-            console.log(content);
-          });
-        });
-      });
-    });
-  }
+  constructor(private $injector: Injector) {}
 }

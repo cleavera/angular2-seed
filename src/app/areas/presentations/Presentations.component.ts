@@ -1,6 +1,11 @@
-import {Component} from '@angular/core';
-import {Model} from "../../../services/Model.service";
+import {Component, Injector} from '@angular/core';
+import {Resolve} from "../../service/Resolver.annotation";
 
+@Resolve({
+  presentations(data: any) {
+    return data.root.link.presentation();
+  }
+})
 @Component({
   selector: 'o-presentations',
   styleUrls: ['presentations.css'],
@@ -9,10 +14,9 @@ import {Model} from "../../../services/Model.service";
 export class PresentationsOrchestrator {
   public presentations;
 
-  constructor() {
-    Model.getRoot('http://localhost:1337').$promise.then(root => {
-      console.log(root);
-      this.presentations = root.link.presentation();
-    });
+  constructor(private $injector: Injector) {}
+
+  public ngOnResolve(data: any) {
+    this.presentations = data.presentations;
   }
 }

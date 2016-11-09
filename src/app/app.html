@@ -9,21 +9,10 @@
   <a [routerLink]="['/presentations']">
     Presentations
   </a>
-  |
-	<a [routerLink]="['/about']">
-    About
-  </a>
-  |
-	<a [routerLink]="['/github', 'angular']">
-    Github Repos
-  </a>
 </nav>
 
 <main>
 	<router-outlet></router-outlet>
-
-
-  <button (click)="fetch()">Fetch</button>
 </main>
 
 
