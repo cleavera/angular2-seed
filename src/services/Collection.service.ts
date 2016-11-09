@@ -29,7 +29,7 @@ export class Collection {
       }
 
       return model.id === id;
-    })
+    })[0];
   }
 
   public static list(url: string, root: string): Collection {

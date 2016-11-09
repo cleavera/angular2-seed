@@ -8,6 +8,8 @@ export function Resolve(resolveBlocks: any): ClassDecorator {
     const onDestroy = Component.prototype.ngOnDestroy || function() {};
 
     Component.prototype.ngOnInit = function () {
+      onInit.bind(this)();
+
       if (!dataStore) {
         if (!this.$injector) {
           throw new Error('The class must expose the Angular 2 injector on the class as the property $injector');
@@ -18,7 +20,7 @@ export function Resolve(resolveBlocks: any): ClassDecorator {
 
       dataStore.getResolvedData(this).then(data => {
         Object.keys(resolveBlocks).forEach(resolveName => {
-          dataStore.addData(this, resolveName, Promise.resolve(resolveBlocks[resolveName](data)));
+          dataStore.addData(this, resolveName, Promise.resolve(resolveBlocks[resolveName].bind(this)(data)));
         });
 
         dataStore.getResolvedData(this).then(resolvedData => {
@@ -27,8 +29,6 @@ export function Resolve(resolveBlocks: any): ClassDecorator {
           onResolve.bind(this)(resolvedData);
         });
       });
-
-      onInit.bind(this)();
     };
 
     Component.prototype.ngOnDestroy = function () {
