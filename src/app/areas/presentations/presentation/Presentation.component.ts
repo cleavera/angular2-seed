@@ -5,6 +5,10 @@ import {ActivatedRoute} from "@angular/router";
 @Resolve({
   presentation: function (data) {
     return data.presentations.get(this.id);
+  },
+  slides: function (data) {
+    console.log(data.presentation);
+    return data.presentations.get(this.id).link.slide();
   }
 })
 @Component({
@@ -14,6 +18,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class PresentationsDetailsOrchestrator {
   public presentation;
+  public slides;
   public id;
 
   constructor(private $injector: Injector, private route: ActivatedRoute) {}
@@ -26,6 +31,7 @@ export class PresentationsDetailsOrchestrator {
 
   ngOnResolve(data: any) {
     this.presentation = data.presentation;
-    console.log(this.presentation);
+    this.slides = data.slides;
+    console.log(data);
   }
 }

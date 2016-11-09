@@ -1,0 +1,5 @@
+<ul *ngIf="slides && slides.$resolved">
+  <li *ngFor="let slide of slides.data">
+    <a [routerLink]="['/presentations', presentation.id, 'slide', slide.id]">{{slide.attributes.title}}</a>
+  </li>
+</ul>
