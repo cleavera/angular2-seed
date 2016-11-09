@@ -27,21 +27,25 @@ export class DataStore {
   }
 
   public getResolvedData(instance: any, key?: string): Promise<any> {
-    return Promise.all(this.parentPromises).then(() => {
-      let promise = Promise.all(this.promises).then(() => {
-        let storedData: { plain: any, resolved: any } = this.getInstance(instance);
+    let outerPromise = new Promise(resolve => {
+      return Promise.all(this.parentPromises).then(() => {
+        return Promise.all(this.promises).then(() => {
+          let storedData: { plain: any, resolved: any } = this.getInstance(instance);
 
-        if (!key) {
-          return storedData.resolved;
-        }
+          resolve(storedData.resolved);
 
-        return storedData.resolved[key];
+          if (!key) {
+            return storedData.resolved;
+          }
+
+          return storedData.resolved[key];
+        });
       });
-
-      this.parentPromises.push(promise);
-
-      return promise;
     });
+
+    this.parentPromises.push(outerPromise);
+
+    return outerPromise;
   }
 
   public cleanData(instance): void {

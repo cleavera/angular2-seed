@@ -1,5 +1,5 @@
 <ul *ngIf="presentations && presentations.$resolved">
   <li *ngFor="let presentation of presentations.data">
-    <a [routerLink]="['/presentations', presentation.id]">{{presentation.attributes.name}}</a>
+    {{presentation.attributes.name}}
   </li>
 </ul>

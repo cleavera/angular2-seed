@@ -1,13 +1,11 @@
 import {Component, Injector} from '@angular/core';
 import {Resolve} from "../../../service/Resolver.annotation";
-import {ActivatedRoute} from "@angular/router";
 
 @Resolve({
   presentation: function (data) {
     return data.presentations.get(this.id);
   },
   slides: function (data) {
-    console.log(data.presentation);
     return data.presentations.get(this.id).link.slide();
   }
 })
@@ -21,13 +19,7 @@ export class PresentationsDetailsOrchestrator {
   public slides;
   public id;
 
-  constructor(private $injector: Injector, private route: ActivatedRoute) {}
-
-  ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.id = params['presentationId'];
-    });
-  }
+  constructor(private $injector: Injector) {}
 
   ngOnResolve(data: any) {
     this.presentation = data.presentation;
