@@ -1,0 +1,5 @@
+<ul *ngIf="slides && slides.$resolved">
+  <li *ngFor="let slide of slides.data">
+    {{slide.attributes.title}}
+  </li>
+</ul>

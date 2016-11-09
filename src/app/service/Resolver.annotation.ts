@@ -10,6 +10,8 @@ export function Resolve(resolveBlocks: any): ClassDecorator {
     Component.prototype.ngOnInit = function () {
       onInit.bind(this)();
 
+      this.$resolved = false;
+
       if (!dataStore) {
         if (!this.$injector) {
           throw new Error('The class must expose the Angular 2 injector on the class as the property $injector');
@@ -27,6 +29,8 @@ export function Resolve(resolveBlocks: any): ClassDecorator {
           const onResolve = Component.prototype.ngOnResolve || function() {};
 
           onResolve.bind(this)(resolvedData);
+
+          this.$resolved = true;
         });
       });
     };

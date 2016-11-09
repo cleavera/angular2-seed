@@ -1,5 +1,2 @@
-<ul *ngIf="slides && slides.$resolved">
-  <li *ngFor="let slide of slides.data">
-    {{slide.attributes.title}}
-  </li>
-</ul>
+<span *ngIf="$resolved">{{presentation.attributes.name}}</span>
+<o-slides></o-slides>

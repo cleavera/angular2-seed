@@ -6,9 +6,6 @@ import {Collection} from "../../../../services/Collection.service";
 @Resolve({
   presentation: function (data) {
     return data.presentations.get(this.id);
-  },
-  slides: function (data) {
-    return data.presentations.get(this.id).link.slide();
   }
 })
 @Component({
@@ -21,12 +18,10 @@ export class PresentationsDetailsOrchestrator {
   public id;
 
   public presentation: Model;
-  public slides: Collection;
 
   constructor(private $injector: Injector) {}
 
   ngOnResolve(data: any) {
     this.presentation = data.presentation;
-    this.slides = data.slides;
   }
 }
