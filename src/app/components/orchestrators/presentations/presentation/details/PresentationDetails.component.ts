@@ -1,6 +1,6 @@
 import {Component, Injector, Input} from '@angular/core';
-import {Resolve} from "../../../../service/Resolver.annotation";
-import {Model} from "../../../../../services/Model.service";
+import {Resolve} from "../../../../../service/Resolver.annotation";
+import {Model} from "../../../../../../services/Model.service";
 
 @Resolve({
   presentation: function (data) {
@@ -15,8 +15,7 @@ import {Model} from "../../../../../services/Model.service";
 })
 @Component({
   selector: 'o-presentation-details',
-  styleUrls: ['presentationDetails.css'],
-  templateUrl: './presentationDetails.html',
+  templateUrl: 'presentationDetails.html',
 })
 export class PresentationsDetailsOrchestrator {
   @Input()

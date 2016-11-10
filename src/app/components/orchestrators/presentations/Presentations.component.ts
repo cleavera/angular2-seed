@@ -1,7 +1,7 @@
 import {Component, Injector} from '@angular/core';
-import {Resolve} from "../../service/Resolver.annotation";
-import {Model} from "../../../services/Model.service";
-import {Collection} from "../../../services/Collection.service";
+import {Resolve} from "../../../service/Resolver.annotation";
+import {Model} from "../../../../services/Model.service";
+import {Collection} from "../../../../services/Collection.service";
 
 @Resolve({
   presentations(data: any) {
@@ -10,8 +10,7 @@ import {Collection} from "../../../services/Collection.service";
 })
 @Component({
   selector: 'o-presentations',
-  styleUrls: ['presentations.css'],
-  templateUrl: './presentations.html',
+  templateUrl: 'presentations.html',
 })
 export class PresentationsOrchestrator {
   public presentations: Collection;
