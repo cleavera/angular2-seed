@@ -1,0 +1,3 @@
+<form>
+  <o-input *ngFor="let fieldName of fields" [fieldMeta]="meta.attributes[fieldName]" [data]="attributes[fieldName]" (onChange)="onValueChange($event, fieldName)"></o-input>
+</form>

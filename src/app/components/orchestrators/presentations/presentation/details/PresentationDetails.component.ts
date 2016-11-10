@@ -5,7 +5,7 @@ import {Model} from "../../../../../../services/Model.service";
 @Resolve({
   presentation: function (data) {
     if (!this.presentation) {
-      return data.presentations.getTemplate();
+      return data.presentations.getTemplate().$promise;
     } else {
       return this.presentation.getMeta().$promise.then(() => {
         return this.presentation;

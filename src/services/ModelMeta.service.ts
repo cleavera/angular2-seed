@@ -1,9 +1,10 @@
 import {Http} from 'webworker-http/dist/index';
+import {IFieldMeta} from "../interfaces/IFieldMeta.interface";
 
 export class ModelMeta {
   $resolved: boolean = false;
   $promise: Promise<any>;
-  attributes: any;
+  attributes: Map<string, IFieldMeta>;
   links: any;
   type: string;
 
