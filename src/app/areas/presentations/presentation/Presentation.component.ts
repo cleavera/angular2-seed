@@ -11,6 +11,10 @@ import {Model} from "../../../../services/Model.service";
     });
   },
   template: function (data) {
+    let template = data.presentations.getTemplate();
+
+    console.log(template);
+
     return data.presentations.getTemplate();
   }
 })

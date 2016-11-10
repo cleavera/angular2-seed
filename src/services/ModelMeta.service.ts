@@ -4,6 +4,7 @@ export class ModelMeta {
   $resolved: boolean = false;
   $promise: Promise<any>;
   attributes: any;
+  links: any;
   type: string;
 
   constructor(promise: Promise<any>) {
@@ -12,6 +13,7 @@ export class ModelMeta {
 
       this.type = response.type;
       this.attributes = response.attributes;
+      this.links = response.links;
 
       return this;
     });

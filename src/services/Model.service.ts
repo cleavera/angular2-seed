@@ -53,7 +53,8 @@ export class Model {
     let model = new Model(meta.$promise.then(() => {
       let response = {
         attributes: {},
-        type: meta.type
+        type: meta.type,
+        links: meta.links
       };
 
       Object.keys(meta.attributes).forEach(attribute => {
