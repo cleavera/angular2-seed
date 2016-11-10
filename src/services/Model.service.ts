@@ -1,6 +1,7 @@
-import {$fetch, Http} from 'webworker-http/dist/index';
+import {$fetch} from 'webworker-http/dist/index';
 import {$partial} from './Partial.helper';
 import {Collection} from './Collection.service';
+import {ModelMeta} from "./ModelMeta.service";
 
 export class Model {
   private _apiRoot: string;
@@ -11,6 +12,7 @@ export class Model {
   link: any;
   id: string;
   type: string;
+  meta: any;
 
   constructor(promise: Promise<any>, root: string) {
     this._apiRoot = root;
@@ -33,8 +35,12 @@ export class Model {
     });
   }
 
-  options(): Model {
-    return Http.getHttpWorker().options(this.link.self.url);
+  public getMeta(): ModelMeta {
+    if (!this.meta) {
+      this.meta = ModelMeta.get(this.link.self.url);
+    }
+    
+    return this.meta;
   }
 
   static getRoot(url: string): Model {

@@ -4,7 +4,12 @@ import {Model} from "../../../../services/Model.service";
 
 @Resolve({
   presentation: function (data) {
-    return data.presentations.get(this.id);
+    let presentation = data.presentations.get(this.id);
+
+    return presentation.getMeta().$promise.then(() => {
+      console.log(presentation);
+      return presentation;
+    });
   },
   template: function (data) {
     return data.presentations.options();
