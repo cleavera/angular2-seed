@@ -29,6 +29,7 @@ import * as _ from 'lodash'
  *
  */
 
-interface Window {
-  $AnthonyCleaver: any;
+declare class HTMLDialogElement {
+  showModal: () => void;
+  close: () => void;
 }

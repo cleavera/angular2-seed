@@ -1,0 +1,10 @@
+<button (click)="open()">{{openLabel}}</button>
+
+<dialog #dialog>
+  <header>
+    <h1>{{modalTitle}}</h1>
+    <button (click)="close()">{{closeLabel}}</button>
+  </header>
+
+  <ng-content></ng-content>
+</dialog>
