@@ -1,5 +1,6 @@
 import {$fetch, Http} from 'webworker-http/dist/index';
 import {Model} from "./Model.service";
+import {ModelMeta} from "./ModelMeta.service";
 
 export class Collection {
   private _apiRoot: string;
@@ -22,6 +23,10 @@ export class Collection {
 
       return this;
     });
+  }
+
+  public getTemplate(): Model {
+    return Model.fromMeta(ModelMeta.get(this._selfLink), this._apiRoot);
   }
 
   public options(): Model {

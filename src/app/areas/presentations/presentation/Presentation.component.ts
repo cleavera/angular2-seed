@@ -7,12 +7,11 @@ import {Model} from "../../../../services/Model.service";
     let presentation = data.presentations.get(this.id);
 
     return presentation.getMeta().$promise.then(() => {
-      console.log(presentation);
       return presentation;
     });
   },
   template: function (data) {
-    return data.presentations.options();
+    return data.presentations.getTemplate();
   }
 })
 @Component({
