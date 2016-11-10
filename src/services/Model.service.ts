@@ -28,7 +28,12 @@ export class Model {
         let relationships = Object.keys(response.links);
 
         relationships.forEach(relationship => {
-          this.link[relationship] = $partial(Collection.list, this._apiRoot + response.links[relationship].href, this._apiRoot);
+          if (['self', 'parent'].includes(relationship)) {
+            this.link[relationship] = $partial(Model.get, this._apiRoot + response.links[relationship].href, this._apiRoot);
+          } else {
+            this.link[relationship] = $partial(Collection.list, this._apiRoot + response.links[relationship].href, this._apiRoot);
+          }
+
           this.link[relationship].url = this._apiRoot + response.links[relationship].href;
         });
       }
