@@ -9,13 +9,6 @@ import {Model} from "../../../../services/Model.service";
     return presentation.getMeta().$promise.then(() => {
       return presentation;
     });
-  },
-  template: function (data) {
-    let template = data.presentations.getTemplate();
-
-    console.log(template);
-
-    return data.presentations.getTemplate();
   }
 })
 @Component({
@@ -23,7 +16,7 @@ import {Model} from "../../../../services/Model.service";
   styleUrls: ['presentation.css'],
   templateUrl: './presentation.html',
 })
-export class PresentationsDetailsOrchestrator {
+export class PresentationOrchestrator {
   @Input()
   public id;
 

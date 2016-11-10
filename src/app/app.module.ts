@@ -6,11 +6,12 @@ import {HttpModule} from '@angular/http';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import {PresentationsOrchestrator} from './areas/presentations/Presentations.component';
 import {DataStore} from './service/DataStore.service';
-import {PresentationsDetailsOrchestrator} from "./areas/presentations/presentation/Presentation.component";
+import {PresentationOrchestrator} from "./areas/presentations/presentation/Presentation.component";
+import {PresentationsDetailsOrchestrator} from "./areas/presentations/presentation/details/PresentationDetails.component";
 import {SlidesOrchestrator} from "./areas/presentations/presentation/slides/Slides.component";
 
 @NgModule({
-  declarations: [AppComponent, PresentationsOrchestrator, PresentationsDetailsOrchestrator, SlidesOrchestrator],
+  declarations: [AppComponent, PresentationsOrchestrator, PresentationOrchestrator, PresentationsDetailsOrchestrator, SlidesOrchestrator],
   imports     : [BrowserModule, FormsModule, HttpModule],
   providers   : [DataStore, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap   : [AppComponent]
