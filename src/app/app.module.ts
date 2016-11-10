@@ -4,18 +4,13 @@ import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpModule} from '@angular/http';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
-import {PresentationsOrchestrator} from './components/orchestrators/presentations/Presentations.component';
 import {DataStore} from './service/DataStore.service';
-import {PresentationOrchestrator} from "./components/orchestrators/presentations/presentation/Presentation.component";
-import {PresentationsDetailsOrchestrator} from "./components/orchestrators/presentations/presentation/details/PresentationDetails.component";
-import {SlidesOrchestrator} from "./components/orchestrators/presentations/presentation/slides/Slides.component";
+import {PresentationsModule} from "./components/orchestrators/presentations/Presentations.module";
 
 @NgModule({
-  declarations: [AppComponent, PresentationsOrchestrator, PresentationOrchestrator, PresentationsDetailsOrchestrator, SlidesOrchestrator],
-  imports     : [BrowserModule, FormsModule, HttpModule],
+  declarations: [AppComponent],
+  imports     : [BrowserModule, FormsModule, HttpModule, PresentationsModule],
   providers   : [DataStore, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap   : [AppComponent]
 })
-export class AppModule {
-
-}
+export class AppModule {}

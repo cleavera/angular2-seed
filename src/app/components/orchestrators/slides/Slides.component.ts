@@ -1,6 +1,6 @@
 import {Component, Injector} from '@angular/core';
-import {Resolve} from "../../../../../service/Resolver.annotation";
-import {Collection} from "../../../../../../services/Collection.service";
+import {Resolve} from "../../../service/Resolver.annotation";
+import {Collection} from "../../../../services/Collection.service";
 
 @Resolve({
   slides: function (data) {
