@@ -1,11 +1,13 @@
 import {Component, Injector, Input} from '@angular/core';
 import {Resolve} from "../../../service/Resolver.annotation";
 import {Model} from "../../../../services/Model.service";
-import {Collection} from "../../../../services/Collection.service";
 
 @Resolve({
   presentation: function (data) {
     return data.presentations.get(this.id);
+  },
+  template: function (data) {
+    return data.presentations.options();
   }
 })
 @Component({

@@ -1,4 +1,4 @@
-import {$fetch} from 'webworker-http/dist/index';
+import {$fetch, Http} from 'webworker-http/dist/index';
 import {$partial} from './Partial.helper';
 import {Collection} from './Collection.service';
 
@@ -26,10 +26,15 @@ export class Model {
 
       relationships.forEach(relationship => {
         this.link[relationship] = $partial(Collection.list, this._apiRoot + response.links[relationship].href, this._apiRoot);
+        this.link[relationship].url = this._apiRoot + response.links[relationship].href;
       });
 
       return this;
     });
+  }
+
+  options(): Model {
+    return Http.getHttpWorker().options(this.link.self.url);
   }
 
   static getRoot(url: string): Model {
