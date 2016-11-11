@@ -1,6 +1,7 @@
 import {Input} from '@angular/core';
 import {ModelMeta} from "../../../../services/ModelMeta.service";
 import {Orchestrator} from "../../../decorators/Orchestrator.decorator";
+import {Model} from "../../../../services/Model.service";
 
 @Orchestrator({
   name: 'form',
@@ -8,17 +9,20 @@ import {Orchestrator} from "../../../decorators/Orchestrator.decorator";
 })
 export class FormOrchestrator {
   @Input()
+  model: Model;
+
   attributes: any;
 
-  @Input()
   meta: ModelMeta;
 
-  @Input()
   methods: any;
 
   fields: string[];
 
   ngOnInit() {
+    this.attributes = this.model.attributes;
+    this.meta = this.model.getMeta();
+    this.methods = this.model.methods;
     this.fields = Object.keys(this.attributes);
   }
 
