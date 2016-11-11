@@ -1,21 +1,21 @@
-import {Component, Injector, Input} from '@angular/core';
-import {Resolve} from "../../../../../service/Resolver.annotation";
+import {Injector, Input} from '@angular/core';
 import {Model} from "../../../../../../services/Model.service";
+import {Orchestrator} from "../../../../../decorators/Orchestrator.decorator";
 
-@Resolve({
-  slide: function (data) {
-    if (!this.slide) {
-      return data.slides.getTemplate().$promise;
-    } else {
-      return this.slide.getMeta().$promise.then(() => {
-        return this.slide;
-      });
+@Orchestrator({
+  name: 'slideDetails',
+  templateUrl: 'slideDetails.html',
+  resolve: {
+    slide: function (data) {
+      if (!this.slide) {
+        return data.slides.getTemplate().$promise;
+      } else {
+        return (<any>this).slide.getMeta().$promise.then(() => {
+          return this.slide;
+        });
+      }
     }
   }
-})
-@Component({
-  selector: 'o-slide-details',
-  templateUrl: 'slideDetails.html',
 })
 export class SlideDetailsOrchestrator {
   @Input()

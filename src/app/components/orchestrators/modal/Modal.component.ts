@@ -1,8 +1,9 @@
-import {Component, ViewChild, Input} from '@angular/core';
+import {ViewChild, Input} from '@angular/core';
+import {Orchestrator} from "../../../decorators/Orchestrator.decorator";
 
-@Component({
-  selector: 'o-modal',
-  templateUrl: 'modal.html',
+@Orchestrator({
+  name: 'modal',
+  templateUrl: 'modal.html'
 })
 export class ModalOrchestrator {
   isOpen: boolean;

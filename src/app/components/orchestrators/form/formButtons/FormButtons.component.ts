@@ -1,8 +1,9 @@
-import {Component, Input} from '@angular/core';
+import {Input} from '@angular/core';
 import {RequestMethods} from "../../../../../constants/RequestMethods.constant";
+import {Orchestrator} from "../../../../decorators/Orchestrator.decorator";
 
-@Component({
-  selector: 'o-form-buttons',
+@Orchestrator({
+  name: 'formButtons',
   templateUrl: 'formButtons.html',
 })
 export class FormButtonsOrchestrator {

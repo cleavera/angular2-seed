@@ -1,21 +1,21 @@
-import {Component, Injector, Input} from '@angular/core';
-import {Resolve} from "../../../../../service/Resolver.annotation";
+import {Injector, Input} from '@angular/core';
 import {Model} from "../../../../../../services/Model.service";
+import {Orchestrator} from "../../../../../decorators/Orchestrator.decorator";
 
-@Resolve({
-  presentation: function (data) {
-    if (!this.presentation) {
-      return data.presentations.getTemplate().$promise;
-    } else {
-      return this.presentation.getMeta().$promise.then(() => {
-        return this.presentation;
-      });
+@Orchestrator({
+  name: 'presentationDetails',
+  templateUrl: 'presentationDetails.html',
+  resolve: {
+    presentation: function (data) {
+      if (!this.presentation) {
+        return data.presentations.getTemplate().$promise;
+      } else {
+        return this.presentation.getMeta().$promise.then(() => {
+          return this.presentation;
+        });
+      }
     }
   }
-})
-@Component({
-  selector: 'o-presentation-details',
-  templateUrl: 'presentationDetails.html',
 })
 export class PresentationsDetailsOrchestrator {
   @Input()

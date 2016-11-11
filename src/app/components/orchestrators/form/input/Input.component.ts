@@ -1,10 +1,11 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {EventEmitter, Input, Output} from '@angular/core';
 import {IFieldMeta} from '../../../../../interfaces/IFieldMeta.interface';
 import {FieldMeta} from "../../../../../services/FieldMeta.service";
+import {Orchestrator} from "../../../../decorators/Orchestrator.decorator";
 
-@Component({
-  selector: 'o-input',
-  templateUrl: 'input.html',
+@Orchestrator({
+  name: 'input',
+  templateUrl: 'input.html'
 })
 export class InputOrchestrator {
   @Input()

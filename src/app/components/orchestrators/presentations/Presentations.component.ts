@@ -1,16 +1,16 @@
-import {Component, Injector} from '@angular/core';
-import {Resolve} from "../../../service/Resolver.annotation";
+import {Injector} from '@angular/core';
 import {Model} from "../../../../services/Model.service";
 import {Collection} from "../../../../services/Collection.service";
+import {Orchestrator} from "../../../decorators/Orchestrator.decorator";
 
-@Resolve({
-  presentations(data: any) {
-    return data.root.link.presentation().$promise;
-  }
-})
-@Component({
-  selector: 'o-presentations',
+@Orchestrator({
+  name: 'presentations',
   templateUrl: 'presentations.html',
+  resolve: {
+    presentations(data: any) {
+      return data.root.link.presentation().$promise;
+    }
+  }
 })
 export class PresentationsOrchestrator {
   public presentations: Collection;

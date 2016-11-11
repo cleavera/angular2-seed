@@ -1,16 +1,16 @@
-import {Component, Injector} from '@angular/core';
-import {Resolve} from "../../../service/Resolver.annotation";
+import {Injector} from '@angular/core';
 import {Collection} from "../../../../services/Collection.service";
 import {Model} from "../../../../services/Model.service";
+import {Orchestrator} from "../../../decorators/Orchestrator.decorator";
 
-@Resolve({
-  slides: function (data) {
-    return data.presentation.link.slide();
-  }
-})
-@Component({
-  selector: 'o-slides',
+@Orchestrator({
+  name: 'slides',
   templateUrl: 'slides.html',
+  resolve: {
+    slides: function (data) {
+      return data.presentation.link.slide();
+    }
+  }
 })
 export class SlidesOrchestrator {
   public slides: Collection;

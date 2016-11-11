@@ -1,9 +1,10 @@
-import {Component, Input} from '@angular/core';
+import {Input} from '@angular/core';
 import {ModelMeta} from "../../../../services/ModelMeta.service";
+import {Orchestrator} from "../../../decorators/Orchestrator.decorator";
 
-@Component({
-  selector: 'o-form',
-  templateUrl: 'form.html',
+@Orchestrator({
+  name: 'form',
+  templateUrl: 'form.html'
 })
 export class FormOrchestrator {
   @Input()
