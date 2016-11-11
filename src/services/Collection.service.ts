@@ -15,11 +15,11 @@ export class Collection {
     this._selfLink = url;
     this._apiRoot = root;
 
-    this.$promise = promise.then(({headers, status, body}) => {
+    this.$promise = promise.then(({headers, body}) => {
       this.$resolved = true;
 
       this.data = body.map(data => {
-        return new Model(Promise.resolve({body: data}), root);
+        return new Model(Promise.resolve({headers: headers, body: data}), root);
       });
 
       return this;

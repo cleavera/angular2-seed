@@ -17,12 +17,14 @@ export class Model {
   constructor(promise: Promise<any>, root: string) {
     this._apiRoot = root;
 
-    this.$promise = promise.then(({headers, status, body}) => {
+    this.$promise = promise.then(({headers, body}) => {
       this.$resolved = true;
       this.id = body.id;
       this.type = body.type;
       this.attributes = body.attributes;
       this.link = {};
+
+      Model.parseAllowHeaders(headers);
 
       if (body.links) {
         let relationships = Object.keys(body.links);
@@ -57,7 +59,8 @@ export class Model {
   static fromMeta(meta: ModelMeta, root: string): Model {
     let model = new Model(meta.$promise.then(() => {
       let response = {
-        body:{
+        headers: meta.headers,
+        body: {
           attributes: {},
           type: meta.type,
           links: meta.links
@@ -82,5 +85,9 @@ export class Model {
 
   private static get(url: string, root: string): Model {
     return new Model($fetch(url), root);
+  }
+
+  private static parseAllowHeaders(headers: {allow: string}) {
+    console.log(headers);
   }
 }
