@@ -73,19 +73,19 @@ export class Model {
 
     if (this.methods[RequestMethods.PUT]) {
       return Http.getHttpWorker().put(url, this.serialise());
-    } else {
-      return Http.getHttpWorker().post(url, this.serialise());
     }
+
+    return Http.getHttpWorker().post(url, this.serialise());
   }
 
-  public remove(): void {
+  public remove(): Promise<IHttpResponse> {
     if (!this.methods[RequestMethods.DELETE]) {
       throw new Error('Model does not have the permissions to remove');
     }
 
     let url = this.link.self.url;
 
-    Http.getHttpWorker().remove(url);
+    return Http.getHttpWorker().remove(url);
   }
 
   static getRoot(url: string): Model {

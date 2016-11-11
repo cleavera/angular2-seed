@@ -1,6 +1,7 @@
 import {Injector, Input} from '@angular/core';
 import {Model} from "../../../../../../services/Model.service";
 import {Orchestrator} from "../../../../../decorators/Orchestrator.decorator";
+import {Collection} from "../../../../../../services/Collection.service";
 
 @Orchestrator({
   name: 'presentationDetails',
@@ -21,9 +22,16 @@ export class PresentationsDetailsOrchestrator {
   @Input()
   public presentation: Model;
 
+  public list: Collection;
+
   constructor(private $injector: Injector) {}
 
   ngOnResolve(data: any) {
     this.presentation = data.presentation;
+    this.list = data.presentations;
+  }
+
+  reload() {
+    this.list.reload();
   }
 }

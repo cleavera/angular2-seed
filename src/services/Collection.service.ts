@@ -1,6 +1,7 @@
 import {$fetch} from 'webworker-http/dist/index';
 import {Model} from "./Model.service";
 import {ModelMeta} from "./ModelMeta.service";
+import {IHttpResponse} from "../interfaces/IHttpResponse.interface";
 
 export class Collection {
   private _apiRoot: string;
@@ -15,22 +16,14 @@ export class Collection {
     this._selfLink = url;
     this._apiRoot = root;
 
-    this.$promise = promise.then(({headers, body}) => {
-      this.$resolved = true;
-
-      this.data = body.map(data => {
-        return new Model(Promise.resolve({headers: headers, body: data}), root);
-      });
-
-      return this;
-    });
+    this.parseResponse(promise);
   }
 
   public getTemplate(): Model {
     return Model.fromMeta(ModelMeta.get(this._selfLink), this._apiRoot);
   }
 
-  public get(id: string, type?: string) {
+  public get(id: string, type?: string): Model {
     return this.data.filter((model: Model) => {
       if (type) {
         return model.type === type && model.id === id;
@@ -38,6 +31,23 @@ export class Collection {
 
       return model.id === id;
     })[0].link.self();
+  }
+
+  public reload(): void {
+    this.$resolved = false;
+    this.parseResponse($fetch(this._selfLink));
+  }
+
+  private parseResponse(promise: Promise<IHttpResponse>): void {
+    this.$promise = promise.then(({headers, body}: IHttpResponse) => {
+      this.$resolved = true;
+
+      this.data = body.map(data => {
+        return new Model(Promise.resolve({headers: headers, body: data}), this._apiRoot);
+      });
+
+      return this;
+    });
   }
 
   public static list(url: string, root: string): Collection {

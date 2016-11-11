@@ -1,4 +1,4 @@
-import {Input} from '@angular/core';
+import {Input, Output, EventEmitter} from '@angular/core';
 import {ModelMeta} from "../../../../services/ModelMeta.service";
 import {Orchestrator} from "../../../decorators/Orchestrator.decorator";
 import {Model} from "../../../../services/Model.service";
@@ -10,6 +10,12 @@ import {Model} from "../../../../services/Model.service";
 export class FormOrchestrator {
   @Input()
   model: Model;
+
+  @Output()
+  save = new EventEmitter<Model>();
+
+  @Output()
+  remove = new EventEmitter<Model>();
 
   attributes: any;
 
@@ -31,10 +37,14 @@ export class FormOrchestrator {
   }
 
   onSave() {
-    this.model.save();
+    this.model.save().then(() => {
+      this.save.emit(this.model);
+    });
   }
 
   onRemove() {
-    this.model.remove();
+    this.model.remove().then(() => {
+      this.remove.emit(this.model);
+    });
   }
 }

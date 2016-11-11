@@ -1,4 +1,4 @@
 <o-modal *ngIf="$resolved" [openLabel]="'Open'" [closeLabel]="'Close'" [modalTitle]="'Details'">
   Hello world
-  <o-form [model]="slide"></o-form>
+  <o-form [model]="slide" (save)="reload()" (remove)="reload()"></o-form>
 </o-modal>
