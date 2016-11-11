@@ -1,2 +1,7 @@
 <label>{{_fieldMeta.description}}</label>
-<input #input type="text" (input)="onInputChange(input.value)" [value]="data">
+<input #input *ngIf="_fieldMeta.isString() && !_fieldMeta.options" type="text" (input)="onInputChange(input.value)" [value]="data">
+<input #input *ngIf="_fieldMeta.isNumber()" type="number" (input)="onInputChange(input.valueAsNumber)" [value]="data">
+<select #input (change)="onInputChange(input.value)" *ngIf="_fieldMeta.options">
+  <option></option>
+  <option *ngFor="let option of _fieldMeta.options" [value]="option.value" [selected]="data === option.value ? true : null">{{option.label}}</option>
+</select>

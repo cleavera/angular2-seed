@@ -6,8 +6,9 @@ export class FieldMeta {
   private required: boolean;
 
   description: string;
+  options: any[];
 
-  constructor({type, description, required}: IFieldMeta) {
+  constructor({type, description, required, options}: IFieldMeta) {
     if (!FieldType[type]) {
       throw new Error(`Unknown type field type ${type}`);
     }
@@ -15,6 +16,7 @@ export class FieldMeta {
     this.type = FieldType[type];
     this.description = description;
     this.required = required;
+    this.options = options;
   }
 
   isRequired() {
