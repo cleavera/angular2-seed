@@ -29,4 +29,12 @@ export class FormOrchestrator {
   onValueChange(value: any, fieldName: string) {
     this.attributes[fieldName] = value;
   }
+
+  onSave() {
+    this.model.save();
+  }
+
+  onRemove() {
+    this.model.remove();
+  }
 }

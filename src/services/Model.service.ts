@@ -1,9 +1,11 @@
-import {$fetch} from 'webworker-http/dist/index';
+import {$fetch, Http} from 'webworker-http/dist/index';
 import {$partial} from '../helpers/Partial.helper';
 import {Collection} from './Collection.service';
 import {ModelMeta} from "./ModelMeta.service";
 import {RequestMethods} from "../constants/RequestMethods.constant";
 import {$enumKeys} from "../helpers/EnumKeys.helper";
+import {IHttpResponse} from "../interfaces/IHttpResponse.interface";
+import {IJSONApi} from "../interfaces/IJSONApi.interface";
 
 export class Model {
   private _apiRoot: string;
@@ -17,10 +19,10 @@ export class Model {
   type: string;
   methods: any;
 
-  constructor(promise: Promise<any>, root: string) {
+  constructor(promise: Promise<IHttpResponse>, root: string) {
     this._apiRoot = root;
 
-    this.$promise = promise.then(({headers, body}) => {
+    this.$promise = promise.then(({headers, body}: IHttpResponse) => {
       this.$resolved = true;
       this.id = body.id;
       this.type = body.type;
@@ -46,6 +48,14 @@ export class Model {
     });
   }
 
+  public serialise(): IJSONApi {
+    return {
+      id: this.id,
+      attributes: this.attributes,
+      type: this.type
+    }
+  }
+
   public getMeta(): ModelMeta {
     if (!this._meta) {
       this._meta = ModelMeta.get(this.link.self.url);
@@ -54,13 +64,37 @@ export class Model {
     return this._meta;
   }
 
+  public save(): Promise<IHttpResponse> {
+    if (!(this.methods[RequestMethods.POST] || this.methods[RequestMethods.PUT])) {
+      throw new Error('Model does not have the permissions to save');
+    }
+
+    let url = this.link.self.url;
+
+    if (this.methods[RequestMethods.PUT]) {
+      return Http.getHttpWorker().put(url, this.serialise());
+    } else {
+      return Http.getHttpWorker().post(url, this.serialise());
+    }
+  }
+
+  public remove(): void {
+    if (!this.methods[RequestMethods.DELETE]) {
+      throw new Error('Model does not have the permissions to remove');
+    }
+
+    let url = this.link.self.url;
+
+    Http.getHttpWorker().remove(url);
+  }
+
   static getRoot(url: string): Model {
     return Model.get(url, url);
   }
 
   static fromMeta(meta: ModelMeta, root: string): Model {
     let model = new Model(meta.$promise.then(() => {
-      let response = {
+      let response: IHttpResponse = {
         headers: meta.headers,
         body: {
           attributes: {},

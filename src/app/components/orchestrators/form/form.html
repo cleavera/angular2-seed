@@ -1,5 +1,5 @@
 <form>
   <o-input *ngFor="let fieldName of fields" [fieldMeta]="meta.attributes[fieldName]" [data]="attributes[fieldName]" (onChange)="onValueChange($event, fieldName)"></o-input>
 
-  <o-form-buttons [methods]="methods"></o-form-buttons>
+  <o-form-buttons [methods]="methods" (save)="onSave()" (create)="onSave()" (remove)="onRemove()"></o-form-buttons>
 </form>
