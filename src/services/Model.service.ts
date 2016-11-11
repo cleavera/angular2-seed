@@ -1,9 +1,9 @@
 import {$fetch} from 'webworker-http/dist/index';
-import {$partial} from './Partial.helper';
+import {$partial} from '../helpers/Partial.helper';
 import {Collection} from './Collection.service';
 import {ModelMeta} from "./ModelMeta.service";
 import {RequestMethods} from "../constants/RequestMethods.constant";
-import {$enumKeys} from "./EnumKeys.helper";
+import {$enumKeys} from "../helpers/EnumKeys.helper";
 
 export class Model {
   private _apiRoot: string;
