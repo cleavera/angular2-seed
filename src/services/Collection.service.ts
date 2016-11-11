@@ -14,11 +14,12 @@ export class Collection {
   constructor(promise: Promise<any>, root: string, url: string) {
     this._selfLink = url;
     this._apiRoot = root;
-    this.$promise = promise.then((response) => {
+
+    this.$promise = promise.then(({headers, status, body}) => {
       this.$resolved = true;
 
-      this.data = response.map(data => {
-        return new Model(Promise.resolve(data), root);
+      this.data = body.map(data => {
+        return new Model(Promise.resolve({body: data}), root);
       });
 
       return this;

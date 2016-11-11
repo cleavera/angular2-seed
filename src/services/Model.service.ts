@@ -16,25 +16,25 @@ export class Model {
 
   constructor(promise: Promise<any>, root: string) {
     this._apiRoot = root;
-    this.$promise = promise.then((response) => {
-      this.$resolved = true;
 
-      this.id = response.id;
-      this.type = response.type;
-      this.attributes = response.attributes;
+    this.$promise = promise.then(({headers, status, body}) => {
+      this.$resolved = true;
+      this.id = body.id;
+      this.type = body.type;
+      this.attributes = body.attributes;
       this.link = {};
 
-      if (response.links) {
-        let relationships = Object.keys(response.links);
+      if (body.links) {
+        let relationships = Object.keys(body.links);
 
         relationships.forEach(relationship => {
           if (['self', 'parent'].includes(relationship)) {
-            this.link[relationship] = $partial(Model.get, this._apiRoot + response.links[relationship].href, this._apiRoot);
+            this.link[relationship] = $partial(Model.get, this._apiRoot + body.links[relationship].href, this._apiRoot);
           } else {
-            this.link[relationship] = $partial(Collection.list, this._apiRoot + response.links[relationship].href, this._apiRoot);
+            this.link[relationship] = $partial(Collection.list, this._apiRoot + body.links[relationship].href, this._apiRoot);
           }
 
-          this.link[relationship].url = this._apiRoot + response.links[relationship].href;
+          this.link[relationship].url = this._apiRoot + body.links[relationship].href;
         });
       }
 
@@ -57,9 +57,11 @@ export class Model {
   static fromMeta(meta: ModelMeta, root: string): Model {
     let model = new Model(meta.$promise.then(() => {
       let response = {
-        attributes: {},
-        type: meta.type,
-        links: meta.links
+        body:{
+          attributes: {},
+          type: meta.type,
+          links: meta.links
+        }
       };
 
       Object.keys(meta.attributes).forEach(attribute => {
@@ -67,7 +69,7 @@ export class Model {
           return;
         }
 
-        response.attributes[attribute] = null;
+        response.body.attributes[attribute] = null;
       });
 
       return response;

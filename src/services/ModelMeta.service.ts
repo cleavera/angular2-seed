@@ -9,12 +9,12 @@ export class ModelMeta {
   type: string;
 
   constructor(promise: Promise<any>) {
-    this.$promise = promise.then(response => {
+    this.$promise = promise.then(({headers, status, body}) => {
       this.$resolved = true;
 
-      this.type = response.type;
-      this.attributes = response.attributes;
-      this.links = response.links;
+      this.type = body.type;
+      this.attributes = body.attributes;
+      this.links = body.links;
 
       return this;
     });
