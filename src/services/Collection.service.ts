@@ -37,7 +37,7 @@ export class Collection {
       }
 
       return model.id === id;
-    })[0];
+    })[0].link.self();
   }
 
   public static list(url: string, root: string): Collection {

@@ -2,6 +2,8 @@ import {$fetch} from 'webworker-http/dist/index';
 import {$partial} from './Partial.helper';
 import {Collection} from './Collection.service';
 import {ModelMeta} from "./ModelMeta.service";
+import {RequestMethods} from "../constants/RequestMethods.constant";
+import {$enumKeys} from "./EnumKeys.helper";
 
 export class Model {
   private _apiRoot: string;
@@ -13,6 +15,7 @@ export class Model {
   link: any;
   id: string;
   type: string;
+  methods: any;
 
   constructor(promise: Promise<any>, root: string) {
     this._apiRoot = root;
@@ -23,8 +26,7 @@ export class Model {
       this.type = body.type;
       this.attributes = body.attributes;
       this.link = {};
-
-      Model.parseAllowHeaders(headers);
+      this.methods = Model.parseAllowHeaders(headers);
 
       if (body.links) {
         let relationships = Object.keys(body.links);
@@ -87,7 +89,14 @@ export class Model {
     return new Model($fetch(url), root);
   }
 
-  private static parseAllowHeaders(headers: {allow: string}) {
-    console.log(headers);
+  private static parseAllowHeaders({ allow = '' }) {
+    let allowHeaders = allow.replace(/\s/g, '').split(','),
+      out = {};
+
+    $enumKeys(RequestMethods).forEach(method => {
+      out[RequestMethods[method]] = allowHeaders.includes(method.toUpperCase());
+    });
+
+    return out;
   }
 }

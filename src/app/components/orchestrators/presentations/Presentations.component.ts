@@ -5,7 +5,7 @@ import {Collection} from "../../../../services/Collection.service";
 
 @Resolve({
   presentations(data: any) {
-    return data.root.link.presentation();
+    return data.root.link.presentation().$promise;
   }
 })
 @Component({

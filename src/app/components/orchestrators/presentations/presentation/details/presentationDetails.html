@@ -1,4 +1,4 @@
 <o-modal *ngIf="$resolved" [openLabel]="'Open'" [closeLabel]="'Close'" [modalTitle]="'Details'">
   Hello world
-  <o-form [attributes]="presentation.attributes" [meta]="presentation.getMeta()"></o-form>
+  <o-form [attributes]="presentation.attributes" [meta]="presentation.getMeta()" [methods]="presentation.methods"></o-form>
 </o-modal>

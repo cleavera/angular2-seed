@@ -1,3 +1,5 @@
-<span *ngIf="$resolved">{{presentation.attributes.name}}</span>
-<o-slides></o-slides>
-<o-presentation-details *ngIf="$resolved" [presentation]="presentation"></o-presentation-details>
+<div *ngIf="$resolved">
+  <span>{{presentation.attributes.name}}</span>
+  <o-slides></o-slides>
+  <o-presentation-details [presentation]="presentation"></o-presentation-details>
+</div>

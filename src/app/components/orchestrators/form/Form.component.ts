@@ -12,6 +12,9 @@ export class FormOrchestrator {
   @Input()
   meta: ModelMeta;
 
+  @Input()
+  methods: any;
+
   fields: string[];
 
   ngOnInit() {
