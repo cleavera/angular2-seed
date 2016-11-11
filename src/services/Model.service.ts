@@ -17,6 +17,7 @@ export class Model {
   link: any;
   id: string;
   type: string;
+  description: string;
   methods: any;
 
   constructor(promise: Promise<IHttpResponse>, root: string) {
@@ -28,6 +29,7 @@ export class Model {
       this.type = body.type;
       this.attributes = body.attributes;
       this.link = {};
+      this.description = headers.description;
       this.methods = Model.parseAllowHeaders(headers);
 
       if (body.links) {
