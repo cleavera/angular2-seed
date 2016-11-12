@@ -2,6 +2,7 @@ import {Injector} from '@angular/core';
 import {Model} from "../../../../services/Model.service";
 import {Collection} from "../../../../services/Collection.service";
 import {Orchestrator} from "../../../decorators/Orchestrator.decorator";
+import {$setInput} from "../../../../helpers/SetInput.helper";
 
 @Orchestrator({
   name: 'presentations',
@@ -23,6 +24,6 @@ export class PresentationsOrchestrator {
   }
 
   public onSelect(presentation: Model) {
-    this.selectedPresentation = presentation;
+    $setInput(this, 'selectedPresentation', presentation);
   }
 }
