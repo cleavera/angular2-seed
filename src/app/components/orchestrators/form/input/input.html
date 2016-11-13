@@ -1,6 +1,9 @@
 <label>{{_fieldMeta.description}}</label>
 <div *ngIf="!_fieldMeta.options">
-  <input #input *ngIf="_fieldMeta.isString()" type="text" (input)="onInputChange(input.value)" [value]="data">
+  <div *ngIf="_fieldMeta.isString()">
+    <input #input *ngIf="_fieldMeta.maxLength <= 1000" type="text" (input)="onInputChange(input.value)" [value]="data">
+    <textarea #input *ngIf="_fieldMeta.maxLength > 1000" (input)="onInputChange(input.value)" [value]="data"></textarea>
+  </div>
   <input #input *ngIf="_fieldMeta.isNumber()" type="number" (input)="onInputChange(input.valueAsNumber)" [value]="data">
 </div>
 

@@ -7,14 +7,16 @@ export class FieldMeta {
 
   description: string;
   options: any[];
+  maxLength: number;
 
-  constructor({type, description, required, options}: IFieldMeta) {
+  constructor({type, description, required, maxLength, options}: IFieldMeta) {
     if (!FieldType[type]) {
       throw new Error(`Unknown type field type ${type}`);
     }
 
     this.type = FieldType[type];
     this.description = description;
+    this.maxLength = maxLength;
     this.required = required;
     this.options = options;
   }
