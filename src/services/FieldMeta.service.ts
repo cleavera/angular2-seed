@@ -21,10 +21,6 @@ export class FieldMeta {
     this.options = options;
   }
 
-  isRequired() {
-    return this.required;
-  }
-
   isString() {
     return this.type === FieldType.string;
   }
@@ -35,5 +31,65 @@ export class FieldMeta {
 
   isBoolean() {
     return this.type === FieldType.boolean;
+  }
+
+  validate(value: any) {
+    let issues: any = {};
+
+    if (!this.validateType(value)) {
+      issues.type = true;
+    }
+
+    if (!this.validateRequired(value)) {
+      issues.required = true;
+    }
+
+    if (!this.validateMaxLength(value)) {
+      issues.maxLength = true;
+    }
+
+    if (!this.validateOptions(value)) {
+      issues.options = true;
+    }
+
+    return issues;
+  }
+
+  private validateType(value: any): boolean {
+    if (this.isBoolean()) {
+      return typeof value === 'boolean';
+    }
+
+    if (this.isString()) {
+      return typeof value === 'string';
+    }
+
+    if (this.isNumber()) {
+      return !isNaN(value);
+    }
+  }
+
+  private validateOptions(value: any): boolean {
+    if (!this.options) {
+      return true;
+    }
+
+    return this.options.includes(value);
+  }
+
+  private validateMaxLength(value: any): boolean {
+    if (!this.isString()) {
+      return true;
+    }
+
+    return value.length <= this.maxLength;
+  }
+
+  private validateRequired(value: any): boolean {
+    if (this.isNumber()) {
+      return !!value || value === 0;
+    }
+
+    return !!value;
   }
 }

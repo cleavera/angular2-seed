@@ -17,13 +17,21 @@ export class InputOrchestrator {
   @Output()
   onChange = new EventEmitter<any>();
 
+  validation: any;
+
   _fieldMeta: FieldMeta;
 
   ngOnInit() {
     this._fieldMeta = new FieldMeta(this.fieldMeta);
   }
 
-  onInputChange(value) {
+  onInputChange(value: any) {
+    this.validation = this._fieldMeta.validate(value);
+
+    if (Object.keys(this.validation).length) {
+      return;
+    }
+
     this.onChange.emit(value);
   }
 }
