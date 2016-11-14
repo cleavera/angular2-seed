@@ -1,5 +1,6 @@
 import {ViewChild, Input} from '@angular/core';
 import {Orchestrator} from "../../../decorators/Orchestrator.decorator";
+import {ModalPresentation} from "../../presentational/modal/Modal.component";
 
 @Orchestrator({
   name: 'modal',
@@ -17,16 +18,15 @@ export class ModalOrchestrator {
   @Input()
   modalTitle: string;
 
-  @ViewChild('dialog')
-  dialog: { nativeElement: HTMLDialogElement };
+  @ViewChild('modal')
+  modal: ModalPresentation;
 
   open() {
-    this.dialog.nativeElement.showModal();
+    this.modal.open();
     this.isOpen = true;
   }
 
-  close() {
-    this.dialog.nativeElement.close();
+  onClose() {
     this.isOpen = false;
   }
 }

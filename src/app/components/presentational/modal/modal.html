@@ -1,0 +1,8 @@
+<dialog #dialog>
+  <header>
+    <h1>{{title}}</h1>
+    <button (click)="close()">{{closeLabel}}</button>
+  </header>
+
+  <ng-content></ng-content>
+</dialog>
