@@ -1,6 +1,6 @@
 import {Input, Output, EventEmitter} from '@angular/core';
-import {RequestMethods} from "../../../../../constants/RequestMethods.constant";
-import {Orchestrator} from "../../../../decorators/Orchestrator.decorator";
+import {RequestMethods} from "../../../../../../constants/RequestMethods.constant";
+import {Orchestrator} from "../../../../../decorators/Orchestrator.decorator";
 
 @Orchestrator({
   name: 'formButtons',

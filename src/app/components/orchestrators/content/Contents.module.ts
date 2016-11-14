@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core'
 import {BrowserModule} from "@angular/platform-browser";
-import {FormModule} from "../form/form.module";
+import {FormModule} from "../../../modules/form/form.module";
 import {ModalModule} from "../../../modules/modal/Modal.module";
 import {ContentsOrchestrator} from "./Contents.component";
 import {ContentOrchestrator} from "./content/Content.component";

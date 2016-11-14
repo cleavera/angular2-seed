@@ -1,7 +1,7 @@
 import {EventEmitter, Input, Output} from '@angular/core';
-import {IFieldMeta} from '../../../../../interfaces/IFieldMeta.interface';
-import {FieldMeta} from "../../../../../services/FieldMeta.service";
-import {Orchestrator} from "../../../../decorators/Orchestrator.decorator";
+import {IFieldMeta} from '../../../../../../interfaces/IFieldMeta.interface';
+import {FieldMeta} from "../../../../../../services/FieldMeta.service";
+import {Orchestrator} from "../../../../../decorators/Orchestrator.decorator";
 
 @Orchestrator({
   name: 'input',

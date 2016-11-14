@@ -1,7 +1,7 @@
 import {Input, Output, EventEmitter} from '@angular/core';
-import {ModelMeta} from "../../../../services/ModelMeta.service";
-import {Orchestrator} from "../../../decorators/Orchestrator.decorator";
-import {Model} from "../../../../services/Model.service";
+import {ModelMeta} from "../../../../../../services/ModelMeta.service";
+import {Orchestrator} from "../../../../../decorators/Orchestrator.decorator";
+import {Model} from "../../../../../../services/Model.service";
 
 @Orchestrator({
   name: 'form',

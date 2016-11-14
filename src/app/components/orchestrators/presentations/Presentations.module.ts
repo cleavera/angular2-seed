@@ -5,7 +5,7 @@ import {PresentationsOrchestrator} from "./Presentations.component";
 import {SlidesModule} from "../slides/Slides.module";
 import {BrowserModule} from "@angular/platform-browser";
 import {ModalModule} from "../../../modules/modal/Modal.module";
-import {FormModule} from "../form/form.module";
+import {FormModule} from "../../../modules/form/form.module";
 
 @NgModule({
   declarations: [PresentationsOrchestrator, PresentationOrchestrator, PresentationsDetailsOrchestrator],
