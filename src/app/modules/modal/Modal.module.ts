@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core'
-import {ModalOrchestrator} from "./Modal.component";
-import {ModalPresentation} from "../../presentational/modal/Modal.component";
+import {ModalOrchestrator} from "./components/orchestrators/modal/Modal.component";
+import {ModalPresentation} from "./components/presentational/modal/Modal.component";
 
 @NgModule({
   declarations: [ModalOrchestrator, ModalPresentation],

@@ -1,5 +1,5 @@
 import {ViewChild, Input} from '@angular/core';
-import {Orchestrator} from "../../../decorators/Orchestrator.decorator";
+import {Orchestrator} from "../../../../../decorators/Orchestrator.decorator";
 import {ModalPresentation} from "../../presentational/modal/Modal.component";
 
 @Orchestrator({

@@ -1,4 +1,4 @@
-import {Presentation} from "../../../decorators/Presentation.decorator";
+import {Presentation} from "../../../../../decorators/Presentation.decorator";
 import {ViewChild, Input, Output, EventEmitter} from "@angular/core";
 
 @Presentation({

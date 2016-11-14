@@ -4,7 +4,7 @@ import {BrowserModule} from "@angular/platform-browser";
 import {SlideOrchestrator} from "./slide/Slide.component";
 import {SlideDetailsOrchestrator} from "./slide/details/SlideDetails.component";
 import {FormModule} from "../form/form.module";
-import {ModalModule} from "../modal/Modal.module";
+import {ModalModule} from "../../../modules/modal/Modal.module";
 import {ContentsModule} from "../content/Contents.module";
 
 @NgModule({
