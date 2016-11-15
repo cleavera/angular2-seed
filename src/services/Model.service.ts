@@ -10,6 +10,7 @@ import {IJSONApi} from "../interfaces/IJSONApi.interface";
 export class Model {
   private _apiRoot: string;
   private _meta: any;
+  private _attributes: any;
 
   $resolved: boolean = false;
   $promise: Promise<any>;
@@ -32,18 +33,10 @@ export class Model {
       this.description = headers.description;
       this.methods = Model.parseAllowHeaders(headers);
 
+      this.cloneAttributes();
+
       if (body.links) {
-        let relationships = Object.keys(body.links);
-
-        relationships.forEach(relationship => {
-          if (['self', 'parent'].includes(relationship)) {
-            this.link[relationship] = $partial(Model.get, this._apiRoot + body.links[relationship].href, this._apiRoot);
-          } else {
-            this.link[relationship] = $partial(Collection.list, this._apiRoot + body.links[relationship].href, this._apiRoot);
-          }
-
-          this.link[relationship].url = this._apiRoot + body.links[relationship].href;
-        });
+        this.parseLinks(body.links);
       }
 
       return this;
@@ -74,6 +67,7 @@ export class Model {
     let url = this.link.self.url;
 
     if (this.methods[RequestMethods.PUT]) {
+      this.cloneAttributes();
       return Http.getHttpWorker().put(url, this.serialise());
     }
 
@@ -88,6 +82,11 @@ export class Model {
     let url = this.link.self.url;
 
     return Http.getHttpWorker().remove(url);
+  }
+
+  public clean(): void {
+    this.attributes = this._attributes;
+    this.cloneAttributes();
   }
 
   static getRoot(url: string): Model {
@@ -119,6 +118,26 @@ export class Model {
     model._meta = meta;
 
     return model;
+  }
+
+  private cloneAttributes() {
+    this._attributes = {};
+
+    Object.assign(this._attributes, this.attributes);
+  }
+
+  private parseLinks(links): void {
+    let relationships = Object.keys(links);
+
+    relationships.forEach(relationship => {
+      if (['self', 'parent'].includes(relationship)) {
+        this.link[relationship] = $partial(Model.get, this._apiRoot + links[relationship].href, this._apiRoot);
+      } else {
+        this.link[relationship] = $partial(Collection.list, this._apiRoot + links[relationship].href, this._apiRoot);
+      }
+
+      this.link[relationship].url = this._apiRoot + links[relationship].href;
+    });
   }
 
   private static get(url: string, root: string): Model {
