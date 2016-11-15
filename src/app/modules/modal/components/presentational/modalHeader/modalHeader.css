@@ -10,9 +10,9 @@ h1 {
   margin: 0; }
 
 button {
-  color: var(--color-font); }
+  color: var(--color-accent); }
   button:hover {
-    color: var(--color-accent); }
+    color: var(--color-font); }
   button:focus {
     color: var(--color-focus);
     outline: none; }

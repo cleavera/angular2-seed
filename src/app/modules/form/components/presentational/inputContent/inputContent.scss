@@ -1,0 +1,10 @@
+@import '../../../styles/_input';
+
+textarea {
+  @include inputSize;
+  @include inputBorder;
+
+  &:focus {
+    outline: none;
+  }
+}

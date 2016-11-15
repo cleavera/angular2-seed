@@ -1,4 +1,5 @@
 :host {
+  color: var(--color-font);
   display: block; }
   :host.is-focused {
     color: var(--color-focus); }

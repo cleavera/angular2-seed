@@ -1,3 +1,14 @@
-
+select {
+  box-sizing: border-box;
+  font-size: var(--fontSize-important);
+  max-width: 300px;
+  padding: 5px 0;
+  width: 100%;
+  border: 1px solid var(--color-dividers);
+  border-width: 0 0 1px; }
+  select:focus {
+    border-color: var(--color-focus); }
+  select:focus {
+    outline: none; }
 
 /*# sourceMappingURL=inputOption.css.map */

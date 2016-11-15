@@ -1,0 +1,10 @@
+@import '../../../styles/_input';
+
+input {
+  @include inputSize;
+  @include inputBorder;
+
+  &:focus {
+    outline: none;
+  }
+}
