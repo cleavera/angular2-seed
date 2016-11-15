@@ -1,9 +1,10 @@
 :root {
-  --color-font: #101010;
   --color-accent: #686868;
   --color-dividers: #c3c3c3;
-  --color-positive: #0a0;
+  --color-focus: #0088ee;
+  --color-font: #101010;
   --color-negative: #c00;
+  --color-positive: #0a0;
   --font-heading: "Century gothic", "Helvetica";
   --font-body: "Arial";
   --fontSize-body: 1rem;

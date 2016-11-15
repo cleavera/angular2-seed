@@ -1,8 +1,12 @@
 :host {
   display: block;
+
+  &.is-focused {
+    color: var(--color-focus);
+  }
 }
 
 label {
-  display: block;
+  display: inline-block;
   margin: 2px 0;
 }

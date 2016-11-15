@@ -1,8 +1,10 @@
 :host {
   display: block; }
+  :host.is-focused {
+    color: var(--color-focus); }
 
 label {
-  display: block;
+  display: inline-block;
   margin: 2px 0; }
 
 /*# sourceMappingURL=fieldLabel.css.map */

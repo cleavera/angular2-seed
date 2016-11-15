@@ -22,7 +22,17 @@ export class InputContentPresentation {
 
   id: string;
 
+  isFocused: boolean;
+
   constructor() {
     this.id = $uniqueId(this.constructor.name);
+  }
+
+  onFocus() {
+    this.isFocused = true;
+  }
+
+  onBlur() {
+    this.isFocused = false;
   }
 }

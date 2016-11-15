@@ -1,5 +1,5 @@
-<p-field-label [ngClass]="{ 'is-required': isRequired }" [label]="label" [inputId]="id"></p-field-label>
-<select #input [id]="id" (change)="onInput.emit(input.value)" [required]="isRequired ? true : null">
+<p-field-label [ngClass]="{ 'is-required': isRequired, 'is-focused': isFocused }" [label]="label" [inputId]="id"></p-field-label>
+<select #input [id]="id" (focus)="onFocus()" (blur)="onBlur()" (change)="onInput.emit(input.value)" [required]="isRequired ? true : null">
   <option></option>
   <option *ngFor="let option of options" [value]="option.value" [selected]="value === option.value ? true : null">{{option.label}}</option>
 </select>

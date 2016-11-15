@@ -1,2 +1,2 @@
-<p-field-label [ngClass]="{ 'is-required': isRequired }" [label]="label" [inputId]="id"></p-field-label>
-<input #input [id]="id" type="number" (input)="onInput.emit(input.valueAsNumber)" [value]="value" [required]="isRequired ? true : null">
+<p-field-label [ngClass]="{ 'is-required': isRequired, 'is-focused': isFocused }" [label]="label" [inputId]="id"></p-field-label>
+<input #input [id]="id" (focus)="onFocus()" (blur)="onBlur()" type="number" (input)="onInput.emit(input.valueAsNumber)" [value]="value" [required]="isRequired ? true : null">
