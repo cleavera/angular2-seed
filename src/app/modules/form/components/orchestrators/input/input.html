@@ -1,14 +1,10 @@
-<label>{{_fieldMeta.description}}</label>
 <div *ngIf="!_fieldMeta.options">
   <div *ngIf="_fieldMeta.isString()">
-    <input #input *ngIf="_fieldMeta.maxLength <= 1000" type="text" (input)="onInputChange(input.value)" [value]="data" [required]="_fieldMeta.required ? true : null">
-    <textarea #input *ngIf="_fieldMeta.maxLength > 1000" (input)="onInputChange(input.value)" [value]="data" [required]="_fieldMeta.required ? true : null"></textarea>
+    <p-input-text *ngIf="_fieldMeta.maxLength <= 1000" [label]="_fieldMeta.description" [value]="data" [isRequired]="_fieldMeta.required" (onInput)="onInputChange($event)"></p-input-text>
+    <p-input-content *ngIf="_fieldMeta.maxLength > 1000" [label]="_fieldMeta.description" [value]="data" [isRequired]="_fieldMeta.required" (onInput)="onInputChange($event)"></p-input-content>
   </div>
 
-  <input #input *ngIf="_fieldMeta.isNumber()" type="number" (input)="onInputChange(input.valueAsNumber)" [value]="data" [required]="_fieldMeta.required ? true : null">
+  <p-input-number *ngIf="_fieldMeta.isNumber()" [label]="_fieldMeta.description" [value]="data" [isRequired]="_fieldMeta.required" (onInput)="onInputChange($event)"></p-input-number>
 </div>
 
-<select #input (change)="onInputChange(input.value)" *ngIf="_fieldMeta.options" [required]="_fieldMeta.required ? true : null">
-  <option></option>
-  <option *ngFor="let option of _fieldMeta.options" [value]="option.value" [selected]="data === option.value ? true : null">{{option.label}}</option>
-</select>
+<p-input-option *ngIf="_fieldMeta.options" [label]="_fieldMeta.description" [options]="_fieldMeta.options" [value]="data" [isRequired]="_fieldMeta.required" (onInput)="onInputChange($event)"></p-input-option>

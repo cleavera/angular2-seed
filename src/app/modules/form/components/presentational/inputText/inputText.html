@@ -1,0 +1,2 @@
+<label [attr.for]="id">{{label}}</label>
+<input #input [id]="id" type="text" (input)="onInput.emit(input.value)" [value]="value" [required]="isRequired ? true : null">

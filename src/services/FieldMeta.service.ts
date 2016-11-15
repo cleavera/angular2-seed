@@ -74,11 +74,11 @@ export class FieldMeta {
       return true;
     }
 
-    return this.options.includes(value);
+    return this.options.map(option => option.value).includes(value);
   }
 
   private validateMaxLength(value: any): boolean {
-    if (!this.isString()) {
+    if (!this.isString() || !this.maxLength) {
       return true;
     }
 
