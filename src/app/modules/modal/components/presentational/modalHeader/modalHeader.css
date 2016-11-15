@@ -9,4 +9,12 @@ h1 {
   font-size: var(--fontSize-subHeading);
   margin: 0; }
 
+button {
+  color: var(--color-font); }
+  button:hover {
+    color: var(--color-accent); }
+  button:focus {
+    color: var(--color-focus);
+    outline: none; }
+
 /*# sourceMappingURL=modalHeader.css.map */
