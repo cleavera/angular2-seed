@@ -1,11 +1,11 @@
 <div *ngIf="!_fieldMeta.options">
   <div *ngIf="_fieldMeta.isString()">
-    <p-input-text *ngIf="_fieldMeta.maxLength <= 1000" [label]="_fieldMeta.description" [value]="data" [isRequired]="_fieldMeta.required" (onInput)="onInputChange($event)"></p-input-text>
-    <p-input-content *ngIf="_fieldMeta.maxLength > 1000" [label]="_fieldMeta.description" [value]="data" [isRequired]="_fieldMeta.required" (onInput)="onInputChange($event)"></p-input-content>
+    <p-input-text [ngClass]="{ 'is-invalid': isInvalid }" *ngIf="_fieldMeta.maxLength <= 1000" [label]="_fieldMeta.description" [value]="data" [isRequired]="_fieldMeta.required" (onInput)="onInputChange($event)"></p-input-text>
+    <p-input-content [ngClass]="{ 'is-invalid': isInvalid }" *ngIf="_fieldMeta.maxLength > 1000" [label]="_fieldMeta.description" [value]="data" [isRequired]="_fieldMeta.required" (onInput)="onInputChange($event)"></p-input-content>
   </div>
 
-  <p-input-number *ngIf="_fieldMeta.isNumber()" [label]="_fieldMeta.description" [value]="data" [isRequired]="_fieldMeta.required" (onInput)="onInputChange($event)"></p-input-number>
+  <p-input-number [ngClass]="{ 'is-invalid': isInvalid }" *ngIf="_fieldMeta.isNumber()" [label]="_fieldMeta.description" [value]="data" [isRequired]="_fieldMeta.required" (onInput)="onInputChange($event)"></p-input-number>
 </div>
 
-<p-input-option *ngIf="_fieldMeta.options" [label]="_fieldMeta.description" [options]="_fieldMeta.options" [value]="data" [isRequired]="_fieldMeta.required" (onInput)="onInputChange($event)"></p-input-option>
+<p-input-option [ngClass]="{ 'is-invalid': isInvalid }" *ngIf="_fieldMeta.options" [label]="_fieldMeta.description" [options]="_fieldMeta.options" [value]="data" [isRequired]="_fieldMeta.required" (onInput)="onInputChange($event)"></p-input-option>
 <p-field-messages [validation]="validation"></p-field-messages>

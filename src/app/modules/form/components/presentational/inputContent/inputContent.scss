@@ -1,5 +1,13 @@
 @import '../../../styles/_input';
 
+:host {
+  &.is-invalid {
+    --color-dividers: var(--color-negative);
+    --color-focus: var(--color-negative);
+    --color-font: var(--color-negative);
+  }
+}
+
 textarea {
   @include inputSize;
   @include inputBorder;

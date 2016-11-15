@@ -35,4 +35,8 @@ export class InputOrchestrator {
 
     this.onChange.emit(value);
   }
+
+  get isInvalid() {
+    return this.validation && this.validation.hasValidationIssues()
+  }
 }

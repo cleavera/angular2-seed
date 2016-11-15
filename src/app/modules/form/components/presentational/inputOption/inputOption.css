@@ -1,3 +1,8 @@
+:host.is-invalid {
+  --color-dividers: var(--color-negative);
+  --color-focus: var(--color-negative);
+  --color-font: var(--color-negative); }
+
 select {
   box-sizing: border-box;
   font-size: var(--fontSize-important);
