@@ -2,6 +2,7 @@
   &.negative {
     button:hover {
       border-bottom-color: var(--color-negative);
+      color: var(--color-negative);
     }
   }
 }
@@ -18,7 +19,7 @@ button {
   &:hover,
   &:focus {
     border-bottom-color: var(--color-positive);
-    color: var(--color-black);
+    color: var(--color-positive);
     outline: none;
   }
 }

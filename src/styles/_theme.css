@@ -2,12 +2,10 @@
   --color-font: #101010;
   --color-accent: #686868;
   --color-dividers: #c3c3c3;
-  --color-positive: #090;
-  --color-negative: #900;
-
+  --color-positive: #0a0;
+  --color-negative: #c00;
   --font-heading: "Century gothic", "Helvetica";
   --font-body: "Arial";
-
   --fontSize-body: 1rem;
   --fontSize-important: 1.4rem;
   --fontSize-subHeading: 2.5rem;

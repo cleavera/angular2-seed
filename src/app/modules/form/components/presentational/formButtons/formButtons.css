@@ -1,5 +1,6 @@
 :host.negative button:hover {
-  border-bottom-color: var(--color-negative); }
+  border-bottom-color: var(--color-negative);
+  color: var(--color-negative); }
 
 button {
   border-bottom: 1px dotted var(--color-dividers);
@@ -11,7 +12,7 @@ button {
   padding: 10px; }
   button:hover, button:focus {
     border-bottom-color: var(--color-positive);
-    color: var(--color-black);
+    color: var(--color-positive);
     outline: none; }
 
 /*# sourceMappingURL=formButtons.css.map */
