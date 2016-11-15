@@ -1,5 +1,5 @@
 dialog {
-  border: 2px solid var(--color-text, #000000);
+  border: 2px solid var(--color-font);
   box-sizing: border-box;
   max-width: 100%;
   width: 500px;
@@ -11,12 +11,13 @@ dialog::backdrop {
 
 header {
   display: flex;
-  border-bottom: 1px solid var(--color-dividers, #c3c3c3);
+  border-bottom: 1px solid var(--color-dividers);
   margin-bottom: 10px;
   padding-bottom: 10px;
 }
 
 h1 {
   flex: 1 1 auto;
+  font-size: var(--fontSize-subHeading);
   margin: 0;
 }

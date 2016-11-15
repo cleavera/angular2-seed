@@ -1,0 +1,15 @@
+@import '_resets.css';
+@import '_theme.css';
+
+:root {
+  font-family: var(--font-body);
+  font-size: 67.5%;
+}
+
+body {
+  font-size: var(--fontSize-body);
+}
+
+h1 {
+  font-family: var(--font-heading);
+}
