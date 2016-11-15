@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,MAAO;EACL,OAAO,EAAE,IAAI;EACb,aAAa,EAAE,+BAA+B;EAC9C,aAAa,EAAE,IAAI;EACnB,cAAc,EAAE,IAAI;;AAGtB,EAAG;EACD,IAAI,EAAE,QAAQ;EACd,SAAS,EAAE,0BAA0B;EACrC,MAAM,EAAE,CAAC",
+"sources": ["modalHeader.scss"],
+"names": [],
+"file": "modalHeader.css"
+}
