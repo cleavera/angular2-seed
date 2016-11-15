@@ -8,3 +8,4 @@
 </div>
 
 <p-input-option *ngIf="_fieldMeta.options" [label]="_fieldMeta.description" [options]="_fieldMeta.options" [value]="data" [isRequired]="_fieldMeta.required" (onInput)="onInputChange($event)"></p-input-option>
+<p-field-messages [validation]="validation"></p-field-messages>

@@ -8,9 +8,11 @@ import {InputTextPresentation} from "./components/presentational/inputText/Input
 import {InputOptionPresentation} from "./components/presentational/inputOption/InputOption.component";
 import {InputNumberPresentation} from "./components/presentational/inputNumber/InputNumber.component";
 import {InputContentPresentation} from "./components/presentational/inputContent/InputContent.component";
+import {FieldMessagesPresentation} from "./components/presentational/fieldMessages/FieldMessages.component";
 
 @NgModule({
   declarations: [
+    FieldMessagesPresentation,
     FormOrchestrator,
     FormButtonsOrchestrator,
     FormButtonsPresentation,

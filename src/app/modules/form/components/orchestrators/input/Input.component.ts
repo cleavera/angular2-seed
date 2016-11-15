@@ -2,6 +2,7 @@ import {EventEmitter, Input, Output} from '@angular/core';
 import {IFieldMeta} from '../../../../../../interfaces/IFieldMeta.interface';
 import {FieldMeta} from "../../../../../../services/FieldMeta.service";
 import {Orchestrator} from "../../../../../decorators/Orchestrator.decorator";
+import {Validation} from "../../../../../../services/Validation.service";
 
 @Orchestrator({
   name: 'input',
@@ -17,7 +18,7 @@ export class InputOrchestrator {
   @Output()
   onChange = new EventEmitter<any>();
 
-  validation: any;
+  validation: Validation;
 
   _fieldMeta: FieldMeta;
 
@@ -28,7 +29,7 @@ export class InputOrchestrator {
   onInputChange(value: any) {
     this.validation = this._fieldMeta.validate(value);
 
-    if (Object.keys(this.validation).length) {
+    if (this.validation.hasValidationIssues()) {
       return;
     }
 

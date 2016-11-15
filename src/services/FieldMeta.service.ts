@@ -1,5 +1,7 @@
 import {IFieldMeta} from "../interfaces/IFieldMeta.interface";
 import {FieldType} from "../constants/FieldType.constant";
+import {Validation} from "./Validation.service";
+import {ValidationIssue} from "../constants/ValidationIssue.constant";
 
 export class FieldMeta {
   private type: FieldType;
@@ -33,26 +35,26 @@ export class FieldMeta {
     return this.type === FieldType.boolean;
   }
 
-  validate(value: any) {
-    let issues: any = {};
+  validate(value: any): Validation {
+    let validation: Validation = new Validation();
 
     if (!this.validateType(value)) {
-      issues.type = true;
+      validation.addIssue(ValidationIssue.TYPE);
     }
 
     if (!this.validateRequired(value)) {
-      issues.required = true;
+      validation.addIssue(ValidationIssue.REQUIRED);
     }
 
     if (!this.validateMaxLength(value)) {
-      issues.maxLength = true;
+      validation.addIssue(ValidationIssue.MAXLENGTH);
     }
 
     if (!this.validateOptions(value)) {
-      issues.options = true;
+      validation.addIssue(ValidationIssue.OPTIONS);
     }
 
-    return issues;
+    return validation;
   }
 
   private validateType(value: any): boolean {
