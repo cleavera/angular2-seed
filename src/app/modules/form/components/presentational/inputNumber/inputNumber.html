@@ -1,2 +1,2 @@
-<label [attr.for]="id">{{label}}</label>
+<p-field-label [ngClass]="{ 'is-required': isRequired }" [label]="label" [inputId]="id"></p-field-label>
 <input #input [id]="id" type="number" (input)="onInput.emit(input.valueAsNumber)" [value]="value" [required]="isRequired ? true : null">
