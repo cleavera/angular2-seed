@@ -1,0 +1,9 @@
+<ul *ngIf="items.length">
+  <li *ngFor="let item of items">
+    <button (click)="onSelect(item)">{{item.label}}</button>
+  </li>
+</ul>
+
+<p *ngIf="!items.length">No items have been added yet</p>
+
+<ng-content></ng-content>

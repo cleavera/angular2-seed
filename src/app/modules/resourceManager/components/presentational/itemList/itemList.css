@@ -1,0 +1,30 @@
+:host {
+  border: 1px solid black;
+  display: flex;
+  margin: 1em 0;
+  max-width: 500px;
+  padding: 1em; }
+
+p {
+  color: var(--color-accent);
+  flex: 1 0 auto;
+  font-style: italic;
+  text-align: center; }
+
+ul {
+  flex: 1 0 auto;
+  list-style: none;
+  padding: 0; }
+
+li {
+  margin: 1em 0; }
+
+button {
+  border-bottom: 1px dotted var(--color-dividers);
+  color: var(--color-body);
+  cursor: pointer; }
+  button:focus, button:hover {
+    color: var(--color-focus);
+    outline: none; }
+
+/*# sourceMappingURL=itemList.css.map */
