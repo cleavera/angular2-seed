@@ -1,0 +1,9 @@
+<div *ngIf="$resolved">
+  <span>{{item.attributes.title || item.attributes.name || item.attributes.content}}</span>
+
+  <o-item-manager [item]="item" (onChange)="onChange.emit()"></o-item-manager>
+
+  <div *ngFor="let child of children">
+    <o-item-list *ngIf="child && child.$resolved" [items]="child"></o-item-list>
+  </div>
+</div>

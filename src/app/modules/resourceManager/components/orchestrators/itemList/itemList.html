@@ -1,0 +1,11 @@
+<div *ngIf="items && items.$resolved">
+  <ul>
+    <li *ngFor="let item of items.data">
+      <button (click)="onSelect(item)">{{item.attributes.title || item.attributes.name || item.attributes.content}}</button>
+    </li>
+  </ul>
+
+  <o-item-manager [item]="template" (onChange)="items.reload()"></o-item-manager>
+
+  <o-item-details *ngIf="selectedItem" [item]="selectedItem" (onChange)="items.reload()"></o-item-details>
+</div>

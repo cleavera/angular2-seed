@@ -1,9 +1,0 @@
-<ul *ngIf="slides && slides.$resolved">
-  <li *ngFor="let slide of slides.data">
-    <button (click)="onSelect(slide)">{{slide.attributes.title}}</button>
-  </li>
-</ul>
-
-<o-slide *ngIf="selectedSlide" [id]="selectedSlide.id"></o-slide>
-
-<o-slide-details></o-slide-details>

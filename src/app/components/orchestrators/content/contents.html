@@ -1,9 +1,0 @@
-<ul *ngIf="contents && contents.$resolved">
-  <li *ngFor="let content of contents.data">
-    <button (click)="onSelect(content)">{{content.attributes.content}}</button>
-  </li>
-</ul>
-
-<o-content *ngIf="selectedContent" [id]="selectedContent.id"></o-content>
-
-<o-content-details></o-content-details>

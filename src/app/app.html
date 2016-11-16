@@ -1,3 +1,5 @@
-<main>
-	<o-presentations></o-presentations>
+<main *ngIf="$resolved">
+  <div *ngFor="let child of children">
+    <o-item-list *ngIf="child && child.$resolved" [items]="child"></o-item-list>
+  </div>
 </main>
