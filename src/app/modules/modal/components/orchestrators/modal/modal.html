@@ -1,4 +1,4 @@
-<button (click)="open()">{{openLabel}}</button>
+<p-modal-button (open)="open()" [label]="openLabel"></p-modal-button>
 
 <p-modal #modal [title]="modalTitle" [closeLabel]="closeLabel" (onClose)="onClose()">
   <ng-content></ng-content>

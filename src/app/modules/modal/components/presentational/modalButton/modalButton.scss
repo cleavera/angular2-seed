@@ -1,0 +1,12 @@
+button {
+  color: var(--color-accent);
+
+  &:hover {
+    color: var(--color-font);
+  }
+
+  &:focus {
+    color: var(--color-focus);
+    outline: none;
+  }
+}

@@ -1,0 +1,9 @@
+button {
+  color: var(--color-accent); }
+  button:hover {
+    color: var(--color-font); }
+  button:focus {
+    color: var(--color-focus);
+    outline: none; }
+
+/*# sourceMappingURL=modalButton.css.map */
