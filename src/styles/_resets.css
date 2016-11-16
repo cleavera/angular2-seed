@@ -29,3 +29,10 @@ select,
 option {
   font-family: inherit;
 }
+
+dl,
+dt,
+dd,
+ul {
+  margin: 0;
+}

@@ -1,0 +1,19 @@
+:host {
+  border: 1px solid black;
+  display: flex;
+  margin: 1em 0;
+  max-width: 500px;
+  padding: 1em; }
+
+dl {
+  flex: 1 0 auto; }
+
+dt {
+  font-size: var(--fontSize-body); }
+
+dd {
+  font-size: var(--fontSize-important); }
+  dd + dt {
+    margin-top: 1em; }
+
+/*# sourceMappingURL=itemDetails.css.map */

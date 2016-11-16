@@ -1,7 +1,7 @@
 <div *ngIf="$resolved">
-  <span>{{item.label}}</span>
-
-  <o-item-manager [item]="item" (onChange)="onChange.emit()"></o-item-manager>
+  <p-item-details [attributes]="item.attributes" [meta]="item.getMeta().attributes">
+    <o-item-manager [item]="item" (onChange)="onChange.emit()"></o-item-manager>
+  </p-item-details>
 
   <div *ngFor="let child of children">
     <o-item-list *ngIf="child && child.$resolved" [items]="child"></o-item-list>

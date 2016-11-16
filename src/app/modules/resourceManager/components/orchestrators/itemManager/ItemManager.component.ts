@@ -25,7 +25,7 @@ export class ItemMangerOrchestrator {
   ngOnInit() {
     this.item.$promise.then(() => {
       this.item.getMeta().$promise.then(() => {
-        this.title = this.item.methods[RequestMethods.POST] ? `Create ${this.item.description}` : `${this.item.description} details`;
+        this.title = this.item.methods[RequestMethods.POST] ? `Create ${this.item.description}` : `Edit ${this.item.description}`;
 
         this.$resolved = true;
       });

@@ -1,10 +1,11 @@
 import {Http} from 'webworker-http/dist/index';
 import {IFieldMeta} from "../interfaces/IFieldMeta.interface";
+import {FieldMeta} from "./FieldMeta.service";
 
 export class ModelMeta {
   $resolved: boolean = false;
   $promise: Promise<any>;
-  attributes: Map<string, IFieldMeta>;
+  attributes: Map<string, FieldMeta>;
   headers: any;
   links: any;
   type: string;
@@ -14,7 +15,7 @@ export class ModelMeta {
       this.$resolved = true;
 
       this.type = body.type;
-      this.attributes = body.attributes;
+      this.attributes = ModelMeta.parseAttributes(body.attributes);
       this.links = body.links;
       this.headers = headers;
 
@@ -28,5 +29,15 @@ export class ModelMeta {
 
   static get(url: string): ModelMeta {
     return new ModelMeta(Http.getHttpWorker().options(url));
+  }
+
+  private static parseAttributes(attributes: Map<string, IFieldMeta>): Map<string, FieldMeta> {
+    let out = {};
+
+    Object.keys(attributes).forEach(attribute => {
+      out[attribute] = new FieldMeta(attributes[attribute]);
+    });
+
+    return <Map<string, FieldMeta>>out;
   }
 }

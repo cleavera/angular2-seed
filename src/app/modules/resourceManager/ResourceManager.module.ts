@@ -5,9 +5,10 @@ import {ItemListOrchestrator} from "./components/orchestrators/itemList/ItemList
 import {FormModule} from "../form/form.module";
 import {ModalModule} from "../modal/Modal.module";
 import {BrowserModule} from "@angular/platform-browser";
+import {ItemDetailsPresentation} from "./components/presentational/itemDetails/ItemDetails.component";
 
 @NgModule({
-  declarations: [ItemDetailsOrchestrator, ItemMangerOrchestrator, ItemListOrchestrator],
+  declarations: [ItemDetailsOrchestrator, ItemDetailsPresentation, ItemMangerOrchestrator, ItemListOrchestrator],
   imports     : [BrowserModule, FormModule, ModalModule],
   exports     : [ItemListOrchestrator]
 })

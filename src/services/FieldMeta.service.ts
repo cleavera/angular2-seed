@@ -10,8 +10,9 @@ export class FieldMeta {
   description: string;
   options: any[];
   maxLength: number;
+  label: boolean;
 
-  constructor({type, description, required, maxLength, options}: IFieldMeta) {
+  constructor({type, description, required, label, maxLength, options}: IFieldMeta) {
     if (!FieldType[type]) {
       throw new Error(`Unknown type field type ${type}`);
     }
@@ -21,6 +22,7 @@ export class FieldMeta {
     this.maxLength = maxLength;
     this.required = required;
     this.options = options;
+    this.label = label;
   }
 
   isString() {
@@ -55,6 +57,22 @@ export class FieldMeta {
     }
 
     return validation;
+  }
+
+  viewValue(value: any): string {
+    if (this.options) {
+      return this.options.reduce((a, b) => {
+        if (a.value === value) {
+          return a.label;
+        }
+
+        if (b.value === value) {
+          return b.label;
+        }
+      })
+    }
+
+    return value;
   }
 
   private validateType(value: any): boolean {
