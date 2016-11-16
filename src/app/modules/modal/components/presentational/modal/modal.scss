@@ -8,16 +8,6 @@
   }
 }
 
-@keyframes expand {
-  from {
-    transform: scale(0);
-  }
-
-  to {
-    transform: scale(1);
-  }
-}
-
 dialog {
   border: 2px solid var(--color-font);
   box-sizing: border-box;
@@ -27,9 +17,5 @@ dialog {
   &::backdrop {
     animation: fadeIn .3s;
     background-color: rgba(0, 0, 0, 0.6);
-  }
-
-  &[open] {
-    animation: expand .3s cubic-bezier(.175, .885, .320, 1.2759);
   }
 }
