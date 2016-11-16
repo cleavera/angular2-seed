@@ -1,7 +1,7 @@
-<div *ngIf="items && items.$resolved">
+<div *ngIf="$resolved && items">
   <ul>
     <li *ngFor="let item of items.data">
-      <button (click)="onSelect(item)">{{item.attributes.title || item.attributes.name || item.attributes.content}}</button>
+      <button (click)="onSelect(item)">{{item.label}}</button>
     </li>
   </ul>
 

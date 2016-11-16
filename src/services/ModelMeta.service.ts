@@ -22,6 +22,10 @@ export class ModelMeta {
     });
   }
 
+  getLabelField() {
+    return Object.keys(this.attributes).filter(attribute => this.attributes[attribute].label)[0];
+  }
+
   static get(url: string): ModelMeta {
     return new ModelMeta(Http.getHttpWorker().options(url));
   }

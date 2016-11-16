@@ -12,11 +12,19 @@ export class ItemListOrchestrator {
   @Input()
   items: Collection;
 
+  $resolved: boolean;
+
   selectedItem: Model;
 
   template: Model;
 
   ngOnInit() {
+    this.items.$promise.then(() => {
+      this.items.getMeta().$promise.then(() => {
+        this.$resolved = true;
+      });
+    });
+
     this.template = this.items.getTemplate();
   }
 

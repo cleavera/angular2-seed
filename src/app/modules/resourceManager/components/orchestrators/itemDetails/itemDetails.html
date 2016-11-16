@@ -1,5 +1,5 @@
 <div *ngIf="$resolved">
-  <span>{{item.attributes.title || item.attributes.name || item.attributes.content}}</span>
+  <span>{{item.label}}</span>
 
   <o-item-manager [item]="item" (onChange)="onChange.emit()"></o-item-manager>
 

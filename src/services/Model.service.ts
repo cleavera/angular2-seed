@@ -11,6 +11,7 @@ export class Model {
   private _apiRoot: string;
   private _meta: any;
   private _attributes: any;
+  private _collection: Collection;
 
   $resolved: boolean = false;
   $promise: Promise<any>;
@@ -21,8 +22,21 @@ export class Model {
   description: string;
   methods: any;
 
-  constructor(promise: Promise<IHttpResponse>, root: string) {
+  get label() {
+    let isMetaResolved: boolean = this._meta && this._meta.$resolved;
+
+    if (!isMetaResolved && (this._collection && !this._collection.getMeta().$resolved)) {
+      throw new Error('Meta data needs to be fetched before you can get the label');
+    }
+
+    let meta: ModelMeta = isMetaResolved ? this._meta : this._collection.getMeta();
+
+    return this.attributes[meta.getLabelField()];
+  };
+
+  constructor(promise: Promise<IHttpResponse>, root: string, collection?: Collection) {
     this._apiRoot = root;
+    this._collection = collection;
 
     this.$promise = promise.then(({headers, body}: IHttpResponse) => {
       this.$resolved = true;

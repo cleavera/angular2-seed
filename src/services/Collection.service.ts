@@ -6,6 +6,7 @@ import {IHttpResponse} from "../interfaces/IHttpResponse.interface";
 export class Collection {
   private _apiRoot: string;
   private _selfLink: string;
+  private _meta: any;
 
   $resolved: boolean = false;
   $promise: Promise<any>;
@@ -20,7 +21,15 @@ export class Collection {
   }
 
   public getTemplate(): Model {
-    return Model.fromMeta(ModelMeta.get(this._selfLink), this._apiRoot);
+    return Model.fromMeta(this.getMeta(), this._apiRoot);
+  }
+
+  public getMeta(): ModelMeta {
+    if (!this._meta) {
+      this._meta = ModelMeta.get(this._selfLink);
+    }
+
+    return this._meta;
   }
 
   public get(id: string, type?: string): Model {
@@ -43,7 +52,7 @@ export class Collection {
       this.$resolved = true;
 
       this.data = body.map(data => {
-        return new Model(Promise.resolve({headers: headers, body: data}), this._apiRoot);
+        return new Model(Promise.resolve({headers: headers, body: data}), this._apiRoot, this);
       });
 
       return this;
