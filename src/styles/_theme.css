@@ -25,10 +25,10 @@
   --color-navigationCardFont: var(--color-fontInvert);
 
   --font-heading: "Century gothic", "Helvetica";
-  --font-body: "Arial";
+  --font-body: "Open sans", "Arial";
 
   --fontSize-body: 1rem;
   --fontSize-important: 1.4rem;
   --fontSize-subHeading: 2.5rem;
-  --fontSize-heading: 5rem;
+  --fontSize-heading: 4rem;
 }
