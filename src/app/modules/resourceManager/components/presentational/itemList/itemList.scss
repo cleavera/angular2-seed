@@ -1,4 +1,4 @@
-:host {
+article {
   background: var(--color-primaryCardBackground);
   color: var(--color-primaryCardFont);
   border: 1px solid  var(--color-dividers);
@@ -15,7 +15,7 @@ h1 {
   padding-bottom: 10px;
 }
 
-p {
+.noItems {
   color: var(--color-fontAccent);
   flex: 1 0 auto;
   font-style: italic;
