@@ -15,9 +15,13 @@ h1 {
 
 .noItems {
   color: var(--color-fontAccent);
-  flex: 1 0 auto;
   font-style: italic;
+  flex: 1 0 100%;
   text-align: center; }
+  .noItems + .actions {
+    display: flex;
+    flex: 1 0 100%;
+    justify-content: center; }
 
 ul {
   flex: 1 0 auto;

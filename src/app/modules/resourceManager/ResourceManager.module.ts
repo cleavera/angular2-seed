@@ -7,9 +7,10 @@ import {ModalModule} from "../modal/Modal.module";
 import {BrowserModule} from "@angular/platform-browser";
 import {ItemDetailsPresentation} from "./components/presentational/itemDetails/ItemDetails.component";
 import {ItemListPresentation} from "./components/presentational/itemList/ItemList.component";
+import {SelectedItemPresentation} from "./components/presentational/selectedItem/SelectedItem.component";
 
 @NgModule({
-  declarations: [ItemDetailsOrchestrator, ItemDetailsPresentation, ItemListOrchestrator, ItemListPresentation, ItemMangerOrchestrator],
+  declarations: [ItemDetailsOrchestrator, ItemDetailsPresentation, ItemListOrchestrator, ItemListPresentation, ItemMangerOrchestrator, SelectedItemPresentation],
   imports     : [BrowserModule, FormModule, ModalModule],
   exports     : [ItemListOrchestrator]
 })

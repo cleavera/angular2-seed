@@ -21,6 +21,8 @@
   --color-primaryCardFont: var(--color-font);
   --color-secondaryCardBackground: var(--color-light);
   --color-secondaryCardFont: var(--color-font);
+  --color-navigationCardBackground: var(--color-accent);
+  --color-navigationCardFont: var(--color-fontInvert);
 
   --font-heading: "Century gothic", "Helvetica";
   --font-body: "Arial";

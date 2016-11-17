@@ -1,0 +1,7 @@
+:host {
+  background: var(--color-navigationCardBackground);
+  color: var(--color-navigationCardFont);
+  display: flex;
+  padding: 1rem; }
+
+/*# sourceMappingURL=selectedItem.css.map */

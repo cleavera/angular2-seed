@@ -7,7 +7,11 @@
     </li>
   </ul>
 
-  <p class="noItems" *ngIf="!items.length">No items have been added yet</p>
+  <div class="noItems" *ngIf="!items.length">
+    <p>No items have been added yet</p>
+  </div>
 
-  <ng-content></ng-content>
+  <div class="actions">
+    <ng-content></ng-content>
+  </div>
 </article>
