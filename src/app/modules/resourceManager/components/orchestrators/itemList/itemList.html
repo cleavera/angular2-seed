@@ -1,5 +1,5 @@
 <div *ngIf="$resolved && items">
-  <p-item-list [items]="items.data" (select)="onSelect($event)">
+  <p-item-list [items]="items.data" [title]="items.description" (select)="onSelect($event)">
     <o-item-manager [item]="template" (onChange)="items.reload()"></o-item-manager>
   </p-item-list>
 

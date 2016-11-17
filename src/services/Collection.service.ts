@@ -11,6 +11,7 @@ export class Collection {
   $resolved: boolean = false;
   $promise: Promise<any>;
   data: [Model];
+  description: string;
   link: any;
 
   constructor(promise: Promise<any>, root: string, url: string) {
@@ -50,6 +51,7 @@ export class Collection {
   private parseResponse(promise: Promise<IHttpResponse>): void {
     this.$promise = promise.then(({headers, body}: IHttpResponse) => {
       this.$resolved = true;
+      this.description = headers.description;
 
       this.data = body.map(data => {
         return new Model(Promise.resolve({headers: headers, body: data}), this._apiRoot, this);

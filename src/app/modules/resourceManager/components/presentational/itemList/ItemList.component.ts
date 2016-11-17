@@ -12,6 +12,9 @@ export class ItemListPresentation {
   @Input()
   items: Model[];
 
+  @Input()
+  title: string;
+
   @Output()
   select = new EventEmitter<Model>();
 
