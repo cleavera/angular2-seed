@@ -8,6 +8,7 @@
 
 body {
   background: var(--color-background);
+  background-size: 10px 10px;
   color: var(--color-font);
   display: flex;
   flex-direction: column;

@@ -1,11 +1,14 @@
 :root {
-  --color-primary: #D0D0EE;
+  --color-primary: #1E2749;
   --color-secondary: #F0F0FF;
   --color-light: #FAFAFF;
   --color-accent: #30343F;
   --color-accentLight: #70747F;
 
-  --color-background: var(--color-light);
+  --color-backgroundPrimary: var(--color-primary);
+  --color-backgroundSecondary: #273469;
+
+  --color-background: linear-gradient(135deg, var(--color-backgroundPrimary) 22%,var(--color-backgroundSecondary) 25%,var(--color-backgroundPrimary) 28%,var(--color-backgroundPrimary) 72%,var(--color-backgroundSecondary) 75%,var(--color-backgroundPrimary) 78%);
   --color-fontAccent: var(--color-accentLight);
   --color-dividers: var(--color-accent);
   --color-focus: #69A;
@@ -14,9 +17,9 @@
   --color-negative: #c00;
   --color-positive: #0a0;
 
-  --color-primaryCardBackground: var(--color-primary);
+  --color-primaryCardBackground: var(--color-light);
   --color-primaryCardFont: var(--color-font);
-  --color-secondaryCardBackground: var(--color-secondary);
+  --color-secondaryCardBackground: var(--color-light);
   --color-secondaryCardFont: var(--color-font);
 
   --font-heading: "Century gothic", "Helvetica";
