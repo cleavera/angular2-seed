@@ -4,7 +4,7 @@
 
 button {
   border-bottom: 1px dotted var(--color-dividers);
-  color: var(--color-accent);
+  color: var(--color-fontAccent);
   cursor: pointer;
   float: right;
   font-size: var(--fontSize-important);

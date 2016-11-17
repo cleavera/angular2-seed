@@ -10,7 +10,7 @@ h1 {
   margin: 0; }
 
 button {
-  color: var(--color-accent); }
+  color: var(--color-fontAccent); }
   button:hover {
     color: var(--color-font); }
   button:focus {

@@ -1,5 +1,5 @@
 button {
-  color: var(--color-accent); }
+  color: var(--color-fontAccent); }
   button:hover {
     color: var(--color-font); }
   button:focus {

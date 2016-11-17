@@ -1,12 +1,27 @@
 :root {
-  --color-accent: #868686;
-  --color-dividers: #c3c3c3;
-  --color-focus: #0088ee;
-  --color-font: #3e3e3e;
+  --color-primary: #D0D0EE;
+  --color-secondary: #F0F0FF;
+  --color-light: #FAFAFF;
+  --color-accent: #30343F;
+  --color-accentLight: #70747F;
+
+  --color-background: var(--color-light);
+  --color-fontAccent: var(--color-accentLight);
+  --color-dividers: var(--color-accent);
+  --color-focus: #69A;
+  --color-font: var(--color-accent);
+  --color-fontInvert: var(--color-light);
   --color-negative: #c00;
   --color-positive: #0a0;
+
+  --color-primaryCardBackground: var(--color-primary);
+  --color-primaryCardFont: var(--color-font);
+  --color-secondaryCardBackground: var(--color-secondary);
+  --color-secondaryCardFont: var(--color-font);
+
   --font-heading: "Century gothic", "Helvetica";
   --font-body: "Arial";
+
   --fontSize-body: 1rem;
   --fontSize-important: 1.4rem;
   --fontSize-subHeading: 2.5rem;

@@ -1,5 +1,7 @@
 :host {
-  border: 1px solid black;
+  background: var(--color-secondaryCardBackground);
+  color: var(--color-secondaryCardFont);
+  border: 1px solid var(--color-dividers);
   display: flex;
   margin: 1em 0;
   max-width: 500px;
