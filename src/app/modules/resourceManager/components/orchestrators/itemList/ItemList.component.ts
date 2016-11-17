@@ -2,7 +2,6 @@ import {Input} from '@angular/core';
 import {Orchestrator} from "../../../../../decorators/Orchestrator.decorator";
 import {Collection} from "../../../../../../services/Collection.service";
 import {Model} from "../../../../../../services/Model.service";
-import {$setInput} from "../../../../../../helpers/SetInput.helper";
 
 @Orchestrator({
   name: 'itemList',
@@ -29,6 +28,14 @@ export class ItemListOrchestrator {
   }
 
   public onSelect(item: Model) {
-    $setInput(this, 'selectedItem', item.link.self());
+    this.selectedItem = null;
+
+    let model = item.link.self();
+
+    model.$promise.then(() => {
+      model.getMeta().$promise.then(() => {
+        this.selectedItem = model;
+      });
+    });
   }
 }

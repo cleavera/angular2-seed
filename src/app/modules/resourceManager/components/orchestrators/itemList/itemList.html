@@ -4,7 +4,7 @@
   </p-item-list>
 
   <div *ngIf="selectedItem">
-    <p-selected-item (deSelect)="selectedItem = null"></p-selected-item>
+    <p-selected-item [label]="selectedItem.label" (deSelect)="selectedItem = null"></p-selected-item>
     <o-item-details [item]="selectedItem" (onChange)="items.reload()"></o-item-details>
   </div>
 </div>

@@ -4,3 +4,9 @@
   display: flex;
   padding: 1rem;
 }
+
+p {
+  flex: 1 0 auto;
+  font-size: var(--fontSize-subHeading);
+  font-family: var(--font-heading);
+}
