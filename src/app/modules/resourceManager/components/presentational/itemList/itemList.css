@@ -26,17 +26,24 @@ h1 {
     margin-top: 5px; }
 
 ul {
-  flex: 1 0 auto;
+  flex: 1 1 auto;
   list-style: none;
+  max-width: 100%;
   padding: 0; }
 
 li {
-  margin: 1em 0; }
+  margin: 1em 0;
+  max-width: 100%; }
 
 button {
   border-bottom: 1px dotted var(--color-dividers);
   color: var(--color-body);
-  cursor: pointer; }
+  cursor: pointer;
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
   button:focus, button:hover {
     color: var(--color-focus);
     outline: none; }

@@ -5,8 +5,11 @@
   padding: 1rem; }
 
 p {
-  flex: 1 0 auto;
+  flex: 1 1 auto;
   font-size: var(--fontSize-subHeading);
-  font-family: var(--font-heading); }
+  font-family: var(--font-heading);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
 
 /*# sourceMappingURL=selectedItem.css.map */
